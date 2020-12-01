@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckinComponent } from './customer/checkin/checkin.component';
-import { RoomInfoComponent } from './room-info/room-info.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RegisterComponent } from './customer/register/register.component';
+import { RoomInfoComponent } from './rooms/room-info/room-info.component';
 
 
 
