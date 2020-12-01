@@ -1,20 +1,13 @@
-<div class="row">
-    <div class="col-md-6">
-        <div class="p-5">
-            <h3>Dashboard</h3>
-            <h6>Available - 13</h6>
-            <h6>Not Cleaned-5</h6>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <button class="btn btn-lg btn-menu" type="button" routerLink="/occupied_rooms">Occupied Rooms</button>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="text-center">
-            <div class="form-group">
-                <br />
-                <input type="button" value="TOUR MOTEL ROOMS" class="btn btn-lg btn-primary mt-3" routerLink="/roomInfo" />
-                <br />
-                <input type="button" value="CHECKING CUSTOMERS" class="btn btn-lg btn-success mt-3" routerLink="/customerCheckin" />
-                <br />
-            </div>
+        <div class="col-md-4">
+            <button class="btn btn-lg btn-menu" type="button" routerLink="/vacant_rooms">Vacant Rooms</button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-lg btn-menu" type="button" routerLink="/underclining_rooms">Under Cleaning Rooms</button>
         </div>
     </div>
 </div>

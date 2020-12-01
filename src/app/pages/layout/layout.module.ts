@@ -6,9 +6,10 @@ import { RoomInfoComponent } from './room-info/room-info.component';
 import { CheckinComponent } from './customer/checkin/checkin.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { RoomsComponent } from './rooms/rooms.component';
 
 @NgModule({
-  declarations: [DashboardComponent, RoomInfoComponent, CheckinComponent],
+  declarations: [DashboardComponent, RoomInfoComponent, CheckinComponent, RoomsComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,
