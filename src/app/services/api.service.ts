@@ -48,7 +48,7 @@ export class ApiService {
     );
   }
   private get(url: string): any {
-    return this.http.get(url, { headers: this.getHeaders() }).pipe(
+    return this.http.get(url).pipe(
       catchError(this.handleError),
       tap(result => {
         this.CheckInvalidToken(result);
