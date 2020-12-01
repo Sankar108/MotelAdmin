@@ -1,0 +1,43 @@
+<div class="container">
+    <h3 class="w-100 text-center">Check out room</h3>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row mt-2">
+                <div class="col-md-6">Room No</div>
+                <div class="col-md-6">{{room?.roomNo}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">Check out date</div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">Room charges</div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" value="{{room?.charges}}" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">Extra charges</div>
+                <div class="col-md-6">
+                    <select class="form-control">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">Total</div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" value='{{totalCharge}}' />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+{{room | json}}

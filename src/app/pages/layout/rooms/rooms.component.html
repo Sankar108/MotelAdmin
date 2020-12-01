@@ -1,7 +1,7 @@
 <div class="container">
-    <h2>{{roomStatus}}</h2>
-    <div class="row">
-        <div class="col-md-12 mt-2">
+    <h3>{{pageTitle}}</h3>
+    <div class="row" id="roomListPanel">
+        <div class="col-md-12 mt-2" *ngFor="let room of rooms">
             <div class="card">
                 <div class="row">
                     <div class="col-md-3">
@@ -9,26 +9,10 @@
                     </div>
                     <div class="col-md-9">
                         <div class="containerPanel">
-                            <h4><b>Jane Doe</b></h4>
-                            <p>Interior Designer</p>
-                            <button type="button" class="btn btn-primary btnRoomSubmit">{{roomBtnText}}</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-md-12 mt-2">
-            <div class="card">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="roomImg" src="https://images.oyoroomscdn.com/uploads/hotel_image/39654/medium/c9373c2b206174a2.jpg">
-                    </div>
-                    <div class="col-md-9">
-                        <div class="containerPanel">
-                            <h4><b>Jane Doe</b></h4>
-                            <p>Interior Designer</p>
-                            <button type="button" class="btn btn-primary btnRoomSubmit">{{roomBtnText}}</button>
+                            <h4><b>Room No : </b> {{room.roomNo}}</h4>
+                            <p><b>Number of beds : </b> {{room.noOfBed}}</p>
+                            <p><b>Facility : </b>Parking slot, {{room.acnonAc?'AC':'Non-Ac'}}</p>
+                            <button type="button" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.id)">{{roomBtnText}}</button>
                         </div>
                     </div>
                 </div>

@@ -23,9 +23,14 @@ export class RoomService {
       params = new HttpParams().set(this.PageNumber, pageNumber).set(this.PageSize, pageSize);
       params = '?' + params;
     }
-    else{
+    else {
       params = '';
     }
     return this._api.apiCaller(this._api.getMethod, this._api.roomURL + params);
+  }
+
+  GetRoomById(roomId: any) {
+    let params= new HttpParams().set('id', roomId);
+    return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "?" + params);
   }
 }

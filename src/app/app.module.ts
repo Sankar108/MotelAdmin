@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

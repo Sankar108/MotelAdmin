@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RoomModel } from 'src/app/models/room';
 import { RoomService } from 'src/app/services/room.service';
@@ -13,13 +13,15 @@ import { RoomService } from 'src/app/services/room.service';
 export class RoomsComponent implements OnInit {
   sub: Subscription;
   roomStatus = "";
+  pageTitle = "";
   rooms: RoomModel[] = [];
 
   roomBtnText = 'Book Room';
 
   constructor(
     private route: ActivatedRoute,
-    private roomService: RoomService
+    private roomService: RoomService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -46,6 +48,7 @@ export class RoomsComponent implements OnInit {
     this.roomService.GetRooms().subscribe((response: any) => {
       if (response.succeeded) {
         this.rooms = response.data;
+        console.log('rooms ', this.rooms);
       }
     },
       (err: HttpErrorResponse) => {
@@ -55,13 +58,32 @@ export class RoomsComponent implements OnInit {
 
   SetroomStatus() {
     if (this.roomStatus === 'underclining') {
-      this.roomBtnText = "Not cleaned";
+      this.roomBtnText = "cleaning";
+      this.pageTitle = "Under clean rooms"
     }
     else if (this.roomStatus === 'occupied') {
       this.roomBtnText = 'Check out';
+      this.pageTitle = "Checked in rooms"
     }
     else {
-      this.roomBtnText = 'Book Room';
+      this.roomBtnText = 'Book room';
+      this.pageTitle = "Vacant rooms"
     }
+  }
+
+  SubmitRoom(roomID: any) {
+    if (this.roomStatus === 'occupied') {
+      this.router.navigate(['/room/checkout', roomID]);
+    }
+    else if (this.roomStatus === 'vacant') {
+      this.router.navigate(['/customer/', roomID]);
+    }
+    else {
+      this.CleandRoom(roomID);
+    }
+  }
+
+  CleandRoom(roomID: any) {
+
   }
 }
