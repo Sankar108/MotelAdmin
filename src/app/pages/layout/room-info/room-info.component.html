@@ -1,1 +1,8 @@
-<p>room-info works!</p>
+<div class="container">
+    <table id="tblRoom" class="mt-5 w-100">
+        <tr *ngFor="let room of roomList">
+            <td>{{room.roomID}}</td>
+            <td>{{room.status}}</td>
+        </tr>
+    </table>
+</div>

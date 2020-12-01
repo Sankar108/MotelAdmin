@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-checkin',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckinComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private utilityService: UtilityService,
+  ) {
+    this.utilityService.title = "CUSTOMER CHECKIN";
+  }
 
   ngOnInit(): void {
   }
