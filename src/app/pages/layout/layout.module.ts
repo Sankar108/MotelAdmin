@@ -10,6 +10,7 @@ import { RoomInfoComponent } from './rooms/room-info/room-info.component';
 import { CheckoutComponent } from './rooms/checkout/checkout.component';
 import { SearchUserComponent } from './customer/search-user/search-user.component';
 import { FormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     LayoutRoutingModule,
     SharedModule,
+    BsDatepickerModule,
   ]
 })
 

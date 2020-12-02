@@ -15,11 +15,17 @@ export class CheckoutComponent implements OnInit {
   roomId = '';
   room: RoomModel;
   totalCharge = 0;
+
+  bsValue = new Date();
+  maxDate = new Date();
+ 
   constructor(
     private route: ActivatedRoute,
-    private roomService: RoomService
+    private roomService: RoomService,
+    
   ) {
     this.roomId = this.route.snapshot.paramMap.get('roomId');
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
   }
 
   ngOnInit(): void {
