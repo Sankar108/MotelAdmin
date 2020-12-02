@@ -56,7 +56,10 @@ const routes: Routes = [
     path: 'customer/checkin/:roomId',
     component: CheckinComponent,
   },
-  
+  {
+    path: 'customer/register',
+    component: RegisterComponent
+  }
 ];
 
 @NgModule({

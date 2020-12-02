@@ -13,20 +13,13 @@ import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    RoomInfoComponent,
-    CheckinComponent,
-    RoomsComponent,
-    RegisterComponent,
-    CheckoutComponent,
-    SearchUserComponent
-  ],
+  declarations: [DashboardComponent, RoomInfoComponent, CheckinComponent, RoomsComponent, RegisterComponent,SearchUserComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,
     SharedModule,
     BsDatepickerModule,
+    FormsModule
   ]
 })
 
