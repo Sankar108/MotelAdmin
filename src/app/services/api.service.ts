@@ -13,7 +13,7 @@ export class ApiService {
     private http: HttpClient,
   ) { }
 
-  
+
   public getMethod = 'get';
   public postMethod = 'post';
   public putMethod = 'put';
@@ -22,6 +22,7 @@ export class ApiService {
   public localAPIpath = environment.localhost + 'api/';
 
   public readonly roomURL = this.localAPIpath + 'RoomDetails';
+  public readonly customerURL = this.localAPIpath + 'CustomerInfo';
   public readonly registerSession = this.roomURL + 'RegisterSession';
 
   public apiCaller(type: string, url: string, data?: any, header?: any): any {

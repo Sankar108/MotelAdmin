@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CheckinComponent } from './customer/checkin/checkin.component';
 import { RoomInfoComponent } from './room-info/room-info.component';
 import { RoomsComponent } from './rooms/rooms.component';
+import { RegisterComponent } from './customer/register/register.component';
 
 
 
@@ -36,6 +37,10 @@ const routes: Routes = [
     path: 'vacant_rooms',
     component: RoomsComponent,
     data : {roomStatus : 'vacant'}
+  },
+  {
+    path: 'customer/register',
+    component: RegisterComponent
   }
 ];
 
