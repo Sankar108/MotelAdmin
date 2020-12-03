@@ -26,10 +26,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     CommonModule,
     LayoutRoutingModule,
     SharedModule,
-    BsDatepickerModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+    BsDatepickerModule.forRoot(),
+    FormsModule
+  ]
 })
 
 export class LayoutModule { }

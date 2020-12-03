@@ -1,56 +1,56 @@
 <div class="container">
-    <h3 class="w-100 text-center">Check out room</h3>
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="card p-3">
-                    <div class="row mt-2">
-                        <div class="col-md-6">Room No</div>
-                        <div class="col-md-6">{{room?.RoomNo}}</div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">Check out date</div>
-                        <div class="col-md-6">
-                            <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsValue]="bsValue">
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">Room charges</div>
-                        <div class="col-md-6">
-                            <input type="text" (change)="CalcTotal()" class="form-control" autocomplete="off" formControlName="roomCharge" [ngClass]="{'is-invalid':checkoutForm.controls.roomCharge.errors }">
-                            <div *ngIf="checkoutForm.controls.roomCharge.errors && checkoutForm.controls.roomCharge.touched" class="invalid-feedback text-left validationmsg">
-                                <div *ngIf="checkoutForm.controls.roomCharge.errors.required">Room Charge is required</div>
-                                <div *ngIf="checkoutForm.controls.roomCharge.errors.minLength">Min charge must be 2 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">Extra charges</div>
-                        <div class="col-md-6">
-                            <select (change)="CalcTotal()" class="form-control" formControlName="extraCharge" [ngClass]="{'is-invalid':checkoutForm.controls.extraCharge.errors }">
-                                <option value="0" selected>0%</option>
-                                <option value="10">10%</option>
-                                <option value="15">15%</option>
-                                <option value="20">20%</option>
-                            </select>
-                            <div *ngIf="checkoutForm.controls.extraCharge.errors && checkoutForm.controls.extraCharge.touched" class="invalid-feedback text-left validationmsg">
-                                <div *ngIf="checkoutForm.controls.extraCharge.errors.required">Extra Charge is required</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">Total</div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control disabled" formControlName="totalCharge" />
-                        </div>
-                        <div class="col-md-12 mt-2 text-right">
-                            <button type="button" class="btn btn-primary pull-right">Pay</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-    </form>
+  <h3 class="w-100 text-center">Check out room</h3>
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+              <div class="card p-3">
+                  <div class="row mt-2">
+                      <div class="col-md-6">Room No</div>
+                      <div class="col-md-6">{{room?.RoomNo}}</div>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col-md-6">Check out date</div>
+                      <div class="col-md-6">
+                          <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsValue]="bsValue">
+                      </div>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col-md-6">Room charges</div>
+                      <div class="col-md-6">
+                          <input type="text" (change)="CalcTotal()" class="form-control" autocomplete="off" formControlName="roomCharge" [ngClass]="{'is-invalid':checkoutForm.controls.roomCharge.errors }">
+                          <div *ngIf="checkoutForm.controls.roomCharge.errors && checkoutForm.controls.roomCharge.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="checkoutForm.controls.roomCharge.errors.required">Room Charge is required</div>
+                              <div *ngIf="checkoutForm.controls.roomCharge.errors.minLength">Min charge must be 2 </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col-md-6">Extra charges</div>
+                      <div class="col-md-6">
+                          <select (change)="CalcTotal()" class="form-control" formControlName="extraCharge" [ngClass]="{'is-invalid':checkoutForm.controls.extraCharge.errors }">
+                              <option value="0" selected>0%</option>
+                              <option value="10">10%</option>
+                              <option value="15">15%</option>
+                              <option value="20">20%</option>
+                          </select>
+                          <div *ngIf="checkoutForm.controls.extraCharge.errors && checkoutForm.controls.extraCharge.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="checkoutForm.controls.extraCharge.errors.required">Extra Charge is required</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col-md-6">Total</div>
+                      <div class="col-md-6">
+                          <input type="text" class="form-control disabled" formControlName="totalCharge" />
+                      </div>
+                      <div class="col-md-12 mt-2 text-right">
+                          <button type="button" class="btn btn-primary pull-right">Pay</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3"></div>
+      </div>
+  </form>
 </div>

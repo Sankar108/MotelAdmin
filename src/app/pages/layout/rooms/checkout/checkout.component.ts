@@ -44,7 +44,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   CalcTotal() {
-    
+
   }
 
   GetRoomById() {
