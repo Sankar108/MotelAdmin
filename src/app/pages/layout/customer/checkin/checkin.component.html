@@ -1,14 +1,51 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="card m-3 p-3 text-center">
-                <h2> Customer Checkin </h2>
-                <input type="text" class="form-control mt-2" placeholder="Name">
-                <input type="text" class="form-control mt-2" placeholder="Address">
-                <input type="text" class="form-control mt-2" placeholder="Room">
+    <div class="card m-3 p-3">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">First Name </div>
+                    <div class="col-md-8">Sankar </div>
+                    <div class="col-md-4">Middle Name </div>
+                    <div class="col-md-8">S </div>
+                    <div class="col-md-4">Last Name </div>
+                    <div class="col-md-8">S </div>
+                    <div class="col-md-4">Document </div>
+                    <div class="col-md-8">Licence </div>
+                    <div class="col-md-4">Document number </div>
+                    <div class="col-md-8">SBDLS123 </div>
+                    <div class="col-md-4">Telephone </div>
+                    <div class="col-md-8">9898989899 </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">Address 1 </div>
+                    <div class="col-md-8">test Address </div>
+                    <div class="col-md-4">Address 2 </div>
+                    <div class="col-md-8">test Addresss </div>
+                    <div class="col-md-4">Country</div>
+                    <div class="col-md-8">india </div>
+                    <div class="col-md-4">State </div>
+                    <div class="col-md-8">Gujrat </div>
+                    <div class="col-md-4">City </div>
+                    <div class="col-md-8">Surat </div>
+                    <div class="col-md-4">ZipCode </div>
+                    <div class="col-md-8">989898 </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-2"></div>
+
+        <br /><br />
+        <div class="row">
+            <div class="col-md-6">
+                <label> Check in Date</label>
+                <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsValue]="bsValue">
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary"> Book Room </button>
+            </div>
+        </div>
+
+
     </div>
 </div>

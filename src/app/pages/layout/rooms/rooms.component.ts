@@ -18,6 +18,11 @@ export class RoomsComponent implements OnInit {
 
   roomBtnText = 'Book Room';
 
+  underCleanRooms: RoomModel[] = [];
+  occupideRooms: RoomModel[] = [];
+  vacantRooms: RoomModel[] = [];
+
+
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomService,
@@ -46,8 +51,14 @@ export class RoomsComponent implements OnInit {
 
   GetRooms() {
     this.roomService.GetRooms().subscribe((response: any) => {
-      if (response.succeeded) {
-        this.rooms = response.data;
+      if (response.Succeeded) {
+        this.rooms = response.Data;
+        if (this.roomStatus === 'occupied') {
+          this.rooms = this.rooms.filter(r => r.IsOccupied === true);
+        }
+        else if (this.roomStatus === 'vacant') {
+          this.rooms = this.rooms.filter(r => r.IsOccupied === false);
+        }
         console.log('rooms ', this.rooms);
       }
     },

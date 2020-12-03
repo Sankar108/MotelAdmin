@@ -9,10 +9,10 @@
                     </div>
                     <div class="col-md-9">
                         <div class="containerPanel">
-                            <h4><b>Room No : </b> {{room.roomNo}}</h4>
-                            <p><b>Number of beds : </b> {{room.noOfBed}}</p>
-                            <p><b>Facility : </b>Parking slot, {{room.acnonAc?'AC':'Non-Ac'}}</p>
-                            <button type="button" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.id)">{{roomBtnText}}</button>
+                            <h4><b>Room No : </b> {{room.RoomNo}}</h4>
+                            <p><b>Number of beds : </b> {{room.NoOfBed}}</p>
+                            <p><b>Facility : </b>Parking slot, {{room.AcnonAc?'AC':'Non-Ac'}}</p>
+                            <button type="submit" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.Id)">{{roomBtnText}}</button>
                         </div>
                     </div>
                 </div>

@@ -9,18 +9,27 @@ import { RegisterComponent } from './customer/register/register.component';
 import { RoomInfoComponent } from './rooms/room-info/room-info.component';
 import { CheckoutComponent } from './rooms/checkout/checkout.component';
 import { SearchUserComponent } from './customer/search-user/search-user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
-  declarations: [DashboardComponent, RoomInfoComponent, CheckinComponent, RoomsComponent, RegisterComponent,SearchUserComponent],
+  declarations: [
+    DashboardComponent,
+    RoomInfoComponent,
+    CheckinComponent,
+    RoomsComponent,
+    RegisterComponent,
+    SearchUserComponent,
+    CheckoutComponent
+  ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
     SharedModule,
     BsDatepickerModule,
-    FormsModule
-  ]
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 
 export class LayoutModule { }

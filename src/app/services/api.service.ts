@@ -23,7 +23,6 @@ export class ApiService {
 
   public readonly roomURL = this.localAPIpath + 'RoomDetails';
   public readonly customerURL = this.localAPIpath + 'CustomerInfo';
-  public readonly registerSession = this.roomURL + 'RegisterSession';
 
   public apiCaller(type: string, url: string, data?: any, header?: any): any {
     if (type === 'get') {

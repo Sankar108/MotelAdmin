@@ -9,16 +9,14 @@ body {
     background: lightgray;
 }
 
-
-/* Handle */
-
 ::-webkit-scrollbar-thumb {
     background: rgb(189, 187, 187);
 }
 
-
-/* Handle on hover */
-
  ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.card {
+    box-shadow: 0 0 10px lightgray;
 }

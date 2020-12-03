@@ -7,7 +7,7 @@ import { UtilityService } from 'src/app/services/utility.service';
   styleUrls: ['./checkin.component.scss']
 })
 export class CheckinComponent implements OnInit {
-
+  bsValue = new Date();
   constructor(
     private utilityService: UtilityService,
   ) {

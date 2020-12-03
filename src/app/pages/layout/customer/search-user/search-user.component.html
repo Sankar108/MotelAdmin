@@ -3,12 +3,17 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search for existing user (with Passport, mobile,EmailID)">
-                <div class="input-group-append">
-                    <button type="button" class="input-group-text" id="btnExistuse">Go</button>
+            <form #f="ngForm" (ngSubmit)="f.form.valid">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="FloorNo" list="customerList" />
+                    <div class="input-group-append">
+                        <button type="button" class="input-group-text" id="btnExistuser" routerLink="/room/checkin/1">Go</button>
+                    </div>
+                    <datalist id="customerList">
+                    <option [value]="customer.FirstName" *ngFor="let customer of customers">{{customer?.FirstName}}</option>
+                </datalist>
                 </div>
-            </div>
+            </form>
             <h5>New user ?</h5>
             <button type="button" class="btn btn-success" routerLink="/customer/register/1">Add + </button>
         </div>

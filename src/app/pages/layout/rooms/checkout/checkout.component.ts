@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroupDirective } from '@angular/forms';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RoomModel } from 'src/app/models/room';
 import { RoomService } from 'src/app/services/room.service';
@@ -18,11 +18,12 @@ export class CheckoutComponent implements OnInit {
 
   bsValue = new Date();
   maxDate = new Date();
- 
+  checkoutForm: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomService,
-    
+    private formBuilder: FormBuilder,
   ) {
     this.roomId = this.route.snapshot.paramMap.get('roomId');
     this.maxDate.setDate(this.maxDate.getDate() + 7);
@@ -30,6 +31,20 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetRoomById();
+    this.checkoutForm = this.formBuilder.group({
+      roomCharge: ['', [Validators.required, Validators.minLength(2)]],
+      extraCharge: ['', [Validators.required]],
+      totalCharge: ['', [Validators.required]],
+      cDate: ['', [Validators.required]],
+    },
+    );
+  }
+
+  onSubmit() {
+  }
+
+  CalcTotal() {
+    
   }
 
   GetRoomById() {
