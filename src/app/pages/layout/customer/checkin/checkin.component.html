@@ -1,51 +1,55 @@
 <div class="container">
+    <h2 class="w-100 text-center"></h2>
     <div class="card m-3 p-3">
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-4">First Name </div>
-                    <div class="col-md-8">Sankar </div>
+                    <div class="col-md-8">{{customerModel.FirstName}} </div>
                     <div class="col-md-4">Middle Name </div>
-                    <div class="col-md-8">S </div>
+                    <div class="col-md-8">{{customerModel.MiddleName}} </div>
                     <div class="col-md-4">Last Name </div>
-                    <div class="col-md-8">S </div>
+                    <div class="col-md-8">{{customerModel.LastName}} </div>
                     <div class="col-md-4">Document </div>
-                    <div class="col-md-8">Licence </div>
+                    <div class="col-md-8">{{customerModel.Document}} </div>
                     <div class="col-md-4">Document number </div>
-                    <div class="col-md-8">SBDLS123 </div>
+                    <div class="col-md-8">{{customerModel.DocumentNo}} </div>
                     <div class="col-md-4">Telephone </div>
-                    <div class="col-md-8">9898989899 </div>
+                    <div class="col-md-8">{{customerModel.PhoneNo}} </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-4">Address 1 </div>
-                    <div class="col-md-8">test Address </div>
+                    <div class="col-md-8">{{customerModel.AddressLine1}} </div>
                     <div class="col-md-4">Address 2 </div>
-                    <div class="col-md-8">test Addresss </div>
+                    <div class="col-md-8">{{customerModel.AddressLine2}} </div>
                     <div class="col-md-4">Country</div>
-                    <div class="col-md-8">india </div>
+                    <div class="col-md-8">{{customerModel.Country}} </div>
                     <div class="col-md-4">State </div>
-                    <div class="col-md-8">Gujrat </div>
+                    <div class="col-md-8">{{customerModel.State}} </div>
                     <div class="col-md-4">City </div>
-                    <div class="col-md-8">Surat </div>
+                    <div class="col-md-8">{{customerModel.City}} </div>
                     <div class="col-md-4">ZipCode </div>
-                    <div class="col-md-8">989898 </div>
+                    <div class="col-md-8">{{customerModel.Zipcode}} </div>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <label>Check in Date</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsValue]="bsValue">
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary"> Book Room </button>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <br /><br />
-        <div class="row">
-            <div class="col-md-6">
-                <label> Check in Date</label>
-                <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsValue]="bsValue">
-            </div>
-            <div class="col-md-6">
-                <button class="btn btn-primary"> Book Room </button>
-            </div>
-        </div>
-
-
     </div>
 </div>
+
+{{roomId}} {{customerId}}

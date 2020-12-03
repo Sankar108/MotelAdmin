@@ -36,11 +36,11 @@ const routes: Routes = [
     component: RoomInfoComponent,
   },
   {
-    path: 'customer/:roomid',
+    path: 'customer/:roomId',
     component: SearchUserComponent,
   },
   {
-    path: 'room/checkin/:roomId',
+    path: 'room/checkin/:roomId/:customerId',
     component: CheckinComponent,
   },
   {

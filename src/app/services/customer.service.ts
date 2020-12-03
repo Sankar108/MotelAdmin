@@ -16,4 +16,7 @@ export class CustomerService {
   GetCustomerList() {
     return this._api.apiCaller(this._api.getMethod, this._api.customerURL);
   }
+  GetCustomerById(id: number) {
+    return this._api.apiCaller(this._api.getMethod, this._api.customerURL + "/" + id);
+  }
 }

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CustomerModel2 } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -11,11 +12,17 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class SearchUserComponent implements OnInit {
   customers: CustomerModel2[] = [];
+  customerModel: CustomerModel2 = new CustomerModel2();
+  roomId = "";
+
   @ViewChild('f') form: FormGroupDirective;
 
   constructor(
     private customerService: CustomerService,
-  ) {}
+    private route: ActivatedRoute
+  ) {
+    this.roomId = this.route.snapshot.paramMap.get('roomId');
+  }
 
   ngOnInit(): void {
     this.GetCustomerList()
