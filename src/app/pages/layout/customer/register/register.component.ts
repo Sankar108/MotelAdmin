@@ -47,14 +47,14 @@ export class RegisterComponent implements OnInit {
       country: ['', [Validators.required]],
       state: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      zipcode: ['', null]
+      zipcode: ['', null],
     });
   }
 
   onSubmit() {
-    if(this.registerForm.valid)
-    {
-     this.AddCustomer(this.customer);
+    if (this.registerForm.valid) {
+      console.log(this.registerForm);
+      this.AddCustomer(this.registerForm.value);
     }
   }
 
