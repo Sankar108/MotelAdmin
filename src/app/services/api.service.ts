@@ -22,6 +22,7 @@ export class ApiService {
   public localAPIpath = environment.localhost + 'api/';
 
   public readonly roomURL = this.localAPIpath + 'RoomDetails';
+  public readonly documentURL = this.localAPIpath + 'Document';
   public readonly customerURL = this.localAPIpath + 'CustomerInfo';
 
   public apiCaller(type: string, url: string, data?: any, header?: any): any {
@@ -50,7 +51,7 @@ export class ApiService {
   private get(url: string): any {
     return this.http.get(url).pipe(
       tap(result => {
-        return result; 
+        return result;
       }),
       catchError(this.handleError),
     );
