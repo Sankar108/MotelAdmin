@@ -3,78 +3,107 @@
     <div class="row">
         <div class="col-md-12 mt-2">
             <div class="card p-4">
-                <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" ngNativeValidate>
+                <form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="onSubmit()">
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="customer.firstName" placeholder="First Name" required>
+                            <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" [ngClass]="{'is-invalid':registerForm.controls.firstName.errors && registerForm.controls.firstName.touched }">
+                            <div *ngIf="registerForm.controls.firstName.errors && registerForm.controls.firstName.touched" class="invalid-feedback text-left validationmsg">
+                                <div *ngIf="registerForm.controls.firstName.errors.required">First name is required</div>
+                                <div *ngIf="registerForm.controls.firstName.errors.minLength">First name must be 2 </div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="middleName">Middle Name</label>
-                            <input type="text" class="form-control" name="middleName" #middleName="ngModel" [(ngModel)]="customer.middleName" placeholder="Middle Name" required>
+                            <input type="text" class="form-control" formControlName="middleName"placeholder="Middle Name" [ngClass]="{'is-invalid':registerForm.controls.middleName.errors && registerForm.controls.middleName.touched}">
+                            <div *ngIf="registerForm.controls.middleName.errors && registerForm.controls.middleName.touched" class="invalid-feedback text-left validationmsg">
+                                <div *ngIf="registerForm.controls.middleName.errors.required">Middle name is required</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="customer.lastName" placeholder="Last Name" required>
-                        </div>
+                          <label for="lastName">Last Name</label>
+                          <input type="text" class="form-control" formControlName="lastName" [(ngModel)]="customer.lastName" placeholder="Last Name" [ngClass]="{'is-invalid':registerForm.controls.lastName.errors && registerForm.controls.lastName.touched}">
+                          <div *ngIf="registerForm.controls.lastName.errors && registerForm.controls.lastName.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="registerForm.controls.lastName.errors.required">Last name is required</div>
+                          </div>
+                      </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="document">Document</label>
-                            <select class="custom-select" name="documentId" #documentId="ngModel" [(ngModel)]="customer.documentId" required>
-                              <option value="">Select Document</option>
-                              <option value="2">Passport</option>
-                              <option value="1">DNI Number</option>
-                              <option value="3">PAN</option>
-                              <option value="4">Driving License</option>
-                              <option value="5">Other</option>
-                          </select>
+                            <select class="form-control" formControlName="documentId" [ngClass]="{'is-invalid':registerForm.controls.documentId.errors && registerForm.controls.documentId.touched}">
+                              <option value="" selected>Select Document</option>
+                              <option *ngFor="let document of documents" [value]="document.Id">{{document.DocumentName}}</option>
+                            </select>
+                            <div *ngIf="registerForm.controls.documentId.errors && registerForm.controls.documentId.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="registerForm.controls.documentId.errors.required">Document is required</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="documentNumber">Document Number</label>
-                            <input type="text" class="form-control" name="documentNo" #documentNo="ngModel" [(ngModel)]="customer.documentNo" placeholder="Document Number" required>
+                            <label for="documentNo">Document Number</label>
+                            <input type="text" class="form-control" formControlName="documentNo"  placeholder="Document Number" [ngClass]="{'is-invalid':registerForm.controls.documentNo.errors && registerForm.controls.documentNo.touched}">
+                            <div *ngIf="registerForm.controls.documentNo.errors && registerForm.controls.documentNo.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="registerForm.controls.documentNo.errors.required">Document number is required</div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="telephone">Telephone Number</label>
-                            <input type="text" class="form-control" name="phoneNo" #phoneNo="ngModel" [(ngModel)]="customer.phoneNo" placeholder="Telephone" required>
+                            <label for="phoneNo">Telephone Number</label>
+                            <input type="text" class="form-control" formControlName="phoneNo" placeholder="Telephone" [ngClass]="{'is-invalid':registerForm.controls.phoneNo.errors && registerForm.controls.phoneNo.touched}">
+                            <div *ngIf="registerForm.controls.phoneNo.errors && registerForm.controls.phoneNo.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="registerForm.controls.phoneNo.errors.required">Phone number is required</div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="addressLine1">Address Line 1</label>
-                            <input type="text" class="form-control" name="addressLine1" #addressLine1="ngModel" [(ngModel)]="customer.addressLine1" placeholder="Address Line 1" required>
+                            <input type="text" class="form-control" formControlName="addressLine1" placeholder="Address Line 1" [ngClass]="{'is-invalid':registerForm.controls.addressLine1.errors && registerForm.controls.addressLine1.touched}">
+                            <div *ngIf="registerForm.controls.addressLine1.errors && registerForm.controls.addressLine1.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="registerForm.controls.addressLine1.errors.required">Address is required</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="addressLine2">Address Line 2</label>
-                            <input type="text" class="form-control" name="addressLine2" #addressLine2="ngModel" [(ngModel)]="customer.addressLine2" placeholder="Address Line 2" required>
+                            <input type="text" class="form-control" formControlName="addressLine2" placeholder="Address Line 2">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="country">Country</label>
-                            <select name="country" #country="ngModel" [(ngModel)]="customer.country" class="form-control" required>
-                              <option selected>Choose...</option>
-                              <option>...</option>
-                          </select>
+                            <select class="form-control" formControlName="country" (change)="changeCountry($event)"
+                            [ngClass]="{'is-invalid':registerForm.controls.country.errors && registerForm.controls.country.touched}">
+                              <option value="" selected>Select Country</option>
+                              <option *ngFor="let country of countryList" [value]="country.CountryCode">{{country.CountryName}}</option>
+                            </select>
+                            <div *ngIf="registerForm.controls.country.errors && registerForm.controls.country.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="registerForm.controls.country.errors.required">Country is required</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="state">State</label>
-                            <select name="state" #state="ngModel" [(ngModel)]="customer.state" class="form-control" required>
-                              <option selected>Choose...</option>
-                              <option>...</option>
-                          </select>
+                            <select class="form-control" formControlName="state" [ngClass]="{'is-invalid':registerForm.controls.country.errors && registerForm.controls.country.touched}">
+                              <option value="" selected>Select State</option>
+                              <option *ngFor="let state of stateList" [value]="state.StateName">{{state.StateName}}</option>
+                            </select>
+                            <div *ngIf="registerForm.controls.state.errors && registerForm.controls.state.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="registerForm.controls.state.errors.required">State is required</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="city">City</label>
-                            <input type="text" class="form-control" name="city" #city="ngModel" [(ngModel)]="customer.city" required>
+                            <input type="text" class="form-control" formControlName="city"
+                            [ngClass]="{'is-invalid':registerForm.controls.city.errors && registerForm.controls.city.touched}">
+                            <div *ngIf="registerForm.controls.city.errors && registerForm.controls.city.touched" class="invalid-feedback text-left validationmsg">
+                              <div *ngIf="registerForm.controls.city.errors.required">City is required</div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="zip">Zip Code</label>
-                            <input type="text" class="form-control" name="zipcode" #zipcode="ngModel" [(ngModel)]="customer.zipcode" required>
+                            <label for="zipcode">Zip Code</label>
+                            <input type="text" class="form-control" formControlName="zipcode">
                         </div>
                     </div>
                     <div class="form-row">
