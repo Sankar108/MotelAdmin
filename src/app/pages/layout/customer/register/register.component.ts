@@ -52,9 +52,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.registerForm.valid)
-    {
-     this.AddCustomer(this.customer);
+    if (this.registerForm.valid) {
+      this.AddCustomer(this.customer);
     }
   }
 
@@ -70,7 +69,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  changeCountry(e) {
+  changeCountry(e, country: any) {
     this.GetStates(e.target.value);
   }
 

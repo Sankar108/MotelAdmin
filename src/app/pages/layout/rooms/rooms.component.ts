@@ -54,10 +54,13 @@ export class RoomsComponent implements OnInit {
       if (response.Succeeded) {
         this.rooms = response.Data;
         if (this.roomStatus === 'occupied') {
-          this.rooms = this.rooms.filter(r => r.IsOccupied === true);
+          this.rooms = this.rooms.filter(r => r.IsOccupied === true && r.IsCleaned);
         }
         else if (this.roomStatus === 'vacant') {
-          this.rooms = this.rooms.filter(r => r.IsOccupied === false);
+          this.rooms = this.rooms.filter(r => r.IsOccupied === false && r.IsCleaned);
+        }
+        else if (this.roomStatus === 'underclining') {
+          this.rooms = this.rooms.filter(r => !r.IsOccupied === false && !r.IsCleaned);
         }
         console.log('rooms ', this.rooms);
       }
