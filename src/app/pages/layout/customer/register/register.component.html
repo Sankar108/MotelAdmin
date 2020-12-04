@@ -32,7 +32,7 @@
                         <div class="form-group col-md-6">
                             <label for="document">Document</label>
                             <select class="form-control" formControlName="documentId" [ngClass]="{'is-invalid':registerForm.controls.documentId.errors && registerForm.controls.documentId.touched}">
-                              <option value="undefined" selected>Select Document</option>
+                              <option value="" selected>Select Document</option>
                               <option *ngFor="let document of documents" [value]="document.Id">{{document.DocumentName}}</option>
                             </select>
                             <div *ngIf="registerForm.controls.documentId.errors && registerForm.controls.documentId.touched" class="invalid-feedback text-left validationmsg">
@@ -74,7 +74,7 @@
                             <label for="country">Country</label>
                             <select class="form-control" formControlName="country" (change)="changeCountry($event)"
                             [ngClass]="{'is-invalid':registerForm.controls.country.errors && registerForm.controls.country.touched}">
-                              <option value="undefined" selected>Select Country</option>
+                              <option value="" selected>Select Country</option>
                               <option *ngFor="let country of countryList" [value]="country.CountryCode">{{country.CountryName}}</option>
                             </select>
                             <div *ngIf="registerForm.controls.country.errors && registerForm.controls.country.touched" class="invalid-feedback text-left validationmsg">
@@ -84,7 +84,7 @@
                         <div class="form-group col-md-4">
                             <label for="state">State</label>
                             <select class="form-control" formControlName="state" [ngClass]="{'is-invalid':registerForm.controls.country.errors && registerForm.controls.country.touched}">
-                              <option value="undefined" selected>Select State</option>
+                              <option value="" selected>Select State</option>
                               <option *ngFor="let state of stateList" [value]="state.StateName">{{state.StateName}}</option>
                             </select>
                             <div *ngIf="registerForm.controls.state.errors && registerForm.controls.state.touched" class="invalid-feedback text-left validationmsg">
