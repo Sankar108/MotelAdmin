@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  changeCountry(e, country: any) {
+  changeCountry(e) {
     this.GetStates(e.target.value);
   }
 
