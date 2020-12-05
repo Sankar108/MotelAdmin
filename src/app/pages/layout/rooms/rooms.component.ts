@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RoomModel } from 'src/app/models/room';
 import { RoomService } from 'src/app/services/room.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-rooms',
@@ -26,21 +27,20 @@ export class RoomsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomService,
-    private router: Router
+    private router: Router,
+    private utilityService: UtilityService
   ) { }
 
   ngOnInit() {
-    this.sub = this.route
-      .data
-      .subscribe(v => {
-        if (v && v.roomStatus) {
-          this.roomStatus = v.roomStatus;
-          this.SetroomStatus();
-        }
-        else {
-          this.roomStatus = "vacant";
-        }
-      });
+    this.sub = this.route.data.subscribe(v => {
+      if (v && v.roomStatus) {
+        this.roomStatus = v.roomStatus;
+        this.SetroomStatus();
+      }
+      else {
+        this.roomStatus = "vacant";
+      }
+    });
 
     this.GetRooms();
   }
@@ -50,7 +50,9 @@ export class RoomsComponent implements OnInit {
   }
 
   GetRooms() {
+    this.utilityService.showLoader();
     this.roomService.GetRooms().subscribe((response: any) => {
+      this.utilityService.hideLoader();
       if (response.Succeeded) {
         this.rooms = response.Data;
         if (this.roomStatus === 'occupied') {
@@ -66,7 +68,8 @@ export class RoomsComponent implements OnInit {
       }
     },
       (err: HttpErrorResponse) => {
-        alert(err.message);
+        this.utilityService.hideLoader();
+        this.utilityService.ShowMsg(err.message, this.utilityService.error);
       })
   }
 

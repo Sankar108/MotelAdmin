@@ -15,7 +15,9 @@ export class CheckoutComponent implements OnInit {
   roomId = '';
   room: RoomModel;
   totalCharge = 0;
-
+  submitted = false;
+  charge = 0;
+  extraCharge = 0;
   bsValue = new Date();
   maxDate = new Date();
   checkoutForm: FormGroup;
@@ -41,10 +43,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
   }
 
   CalcTotal() {
-    
+    this.totalCharge = this.charge + (this.charge * this.extraCharge / 100);
   }
 
   GetRoomById() {
