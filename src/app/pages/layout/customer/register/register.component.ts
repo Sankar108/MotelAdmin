@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { CountryModel, StateModel } from 'src/app/models/country';
 import { CustomerModel } from 'src/app/models/customer';
 import { DocumentModel } from 'src/app/models/document';
@@ -19,15 +19,13 @@ export class RegisterComponent implements OnInit {
   documents: DocumentModel[] = [];
   countryList: CountryModel[] = [];
   stateList: StateModel[] = [];
-
-  registerForm: FormGroup;
+  countryName: string = '';
 
   constructor(
     private countryService: CountryService,
     private documentService: DocumentService,
     private customerService: CustomerService,
-    public utilityService: UtilityService,
-    private formBuilder: FormBuilder
+    public utilityService: UtilityService
   ) {
     this.utilityService.title = 'NEW USER';
   }
@@ -35,27 +33,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.GetCountries();
     this.GetDocuments();
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required]],
-      middleName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      documentId: ['', [Validators.required]],
-      documentNo: ['', [Validators.required]],
-      phoneNo: ['', [Validators.required]],
-      addressLine1: ['', [Validators.required]],
-      addressLine2: ['', null],
-      country: ['', [Validators.required]],
-      state: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      zipcode: ['', null],
-    });
   }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      console.log(this.registerForm);
-      this.AddCustomer(this.registerForm.value);
-    }
+  onSubmit(form: NgForm) {
+    this.customer.country = this.countryName;
+    this.AddCustomer(this.customer);
   }
 
   GetCountries() {
@@ -71,6 +53,7 @@ export class RegisterComponent implements OnInit {
   }
 
   changeCountry(e) {
+    this.countryName = e.target.options[e.target.options.selectedIndex].text;
     this.GetStates(e.target.value);
   }
 
@@ -82,7 +65,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       (err: HttpErrorResponse) => {
-        alert(err.message);
+        //alert(err.message);
       }
     );
   }
