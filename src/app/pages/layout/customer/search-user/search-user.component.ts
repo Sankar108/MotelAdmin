@@ -14,6 +14,7 @@ export class SearchUserComponent implements OnInit {
   customers: CustomerModel2[] = [];
   customerModel: CustomerModel2 = new CustomerModel2();
   roomId = "";
+  customerId = "";
 
   @ViewChild('f') form: FormGroupDirective;
 

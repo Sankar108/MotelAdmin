@@ -27,4 +27,15 @@ export class CustomerModel2 {
   DocumentId: string;
   DocumentNo: string;
   PhoneNo: string;
+  Document: DocumentModel;
+}
+
+export class DocumentModel {
+  Created: string;
+  CreatedBy: string;
+  CustomerInfos: string;
+  DocumentName: string;
+  Id: string;
+  LastModified: string;
+  LastModifiedBy: string;
 }
