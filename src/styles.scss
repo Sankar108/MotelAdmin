@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-    overflow: hidden !important;
+    overflow: auto !important;
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 15px;
     background: lightgray;
 }
 
@@ -19,4 +19,20 @@ body {
 
 .card {
     box-shadow: 0 0 10px lightgray;
+}
+
+.boldPanel label {
+    font-weight: bold;
+}
+
+.cardSection {
+    padding: 15px;
+    border: 0.5px lightgray solid;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.roomImg {
+    width: 250px;
+    max-width: 100%;
 }

@@ -16,8 +16,8 @@ export class CheckoutComponent implements OnInit {
   room: RoomModel;
   totalCharge = 0;
   submitted = false;
-  charge = 0;
-  extraCharge = 0;
+  charge = '0';
+  extraCharge = '0';
   bsValue = new Date();
   maxDate = new Date();
   checkoutForm: FormGroup;
@@ -47,13 +47,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   CalcTotal() {
-    this.totalCharge = this.charge + (this.charge * this.extraCharge / 100);
+    this.totalCharge = parseInt(this.charge) + parseInt(this.extraCharge) ;
   }
 
   GetRoomById() {
     this.roomService.GetRoomById(this.roomId).subscribe((response: any) => {
-      if (response.succeeded) {
-        this.room = response.data[0];
+      if (response.Succeeded) {
+        this.room = response.Data;
         console.log('rooms ', this.room);
       }
     },

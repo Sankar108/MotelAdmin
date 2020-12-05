@@ -30,7 +30,7 @@ export class RoomService {
   }
 
   GetRoomById(roomId: any) {
-    let params= new HttpParams().set('id', roomId);
-    return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "?" + params);
+    // let params= new HttpParams().set('id', roomId);
+    return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "/" + roomId);
   }
 }

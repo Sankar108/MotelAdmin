@@ -2,54 +2,65 @@
     <h2 class="w-100 text-center"></h2>
     <div class="card m-3 p-3">
         <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-4">First Name </div>
-                    <div class="col-md-8">{{customerModel.FirstName}} </div>
-                    <div class="col-md-4">Middle Name </div>
-                    <div class="col-md-8">{{customerModel.MiddleName}} </div>
-                    <div class="col-md-4">Last Name </div>
-                    <div class="col-md-8">{{customerModel.LastName}} </div>
-                    <div class="col-md-4">Document </div>
-                    <div class="col-md-8">{{customerModel?.Document?.DocumentName}} </div>
-                    <div class="col-md-4">Document number </div>
-                    <div class="col-md-8">{{customerModel.DocumentNo}} </div>
-                    <div class="col-md-4">Telephone </div>
-                    <div class="col-md-8">{{customerModel.PhoneNo}} </div>
+            <div class="col-md-8">
+                <!-- <h4>Customer Information</h4> -->
+                <div class="cardSection">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row boldPanel">
+                                <div class="col-md-4"><label>First Name</label> </div>
+                                <div class="col-md-8">{{customerModel.FirstName}} </div>
+                                <div class="col-md-4"><label>Middle Name</label> </div>
+                                <div class="col-md-8">{{customerModel.MiddleName}} </div>
+                                <div class="col-md-4"><label> Name</label> </div>
+                                <div class="col-md-8">{{customerModel.LastName}} </div>
+                                <div class="col-md-4"><label>Document</label> </div>
+                                <div class="col-md-8">{{customerModel?.Document?.DocumentName}} </div>
+                                <div class="col-md-4"><label>Document number</label> </div>
+                                <div class="col-md-8">{{customerModel.DocumentNo}} </div>
+                                <div class="col-md-4"><label>Telephone</label> </div>
+                                <div class="col-md-8">{{customerModel.PhoneNo}} </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 boldPanel">
+                            <div class="row">
+                                <div class="col-md-4"><label>Address 1</label> </div>
+                                <div class="col-md-8">{{customerModel.AddressLine1}} </div>
+                                <div class="col-md-4"><label>Address 2</label> </div>
+                                <div class="col-md-8">{{customerModel.AddressLine2}} </div>
+                                <div class="col-md-4"><label>Country</label></div>
+                                <div class="col-md-8">{{customerModel.Country}} </div>
+                                <div class="col-md-4"><label>State</label> </div>
+                                <div class="col-md-8">{{customerModel.State}} </div>
+                                <div class="col-md-4"><label>City</label> </div>
+                                <div class="col-md-8">{{customerModel.City}} </div>
+                                <div class="col-md-4"><label>ZipCode</label> </div>
+                                <div class="col-md-8">{{customerModel.Zipcode}} </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-4">Address 1 </div>
-                    <div class="col-md-8">{{customerModel.AddressLine1}} </div>
-                    <div class="col-md-4">Address 2 </div>
-                    <div class="col-md-8">{{customerModel.AddressLine2}} </div>
-                    <div class="col-md-4">Country</div>
-                    <div class="col-md-8">{{customerModel.Country}} </div>
-                    <div class="col-md-4">State </div>
-                    <div class="col-md-8">{{customerModel.State}} </div>
-                    <div class="col-md-4">City </div>
-                    <div class="col-md-8">{{customerModel.City}} </div>
-                    <div class="col-md-4">ZipCode </div>
-                    <div class="col-md-8">{{customerModel.Zipcode}} </div>
-                </div>
-            </div>
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
-                <div class="row mt-5">
-                    <div class="col-md-4">
-                        <label>Check in Date</label>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsValue]="bsValue">
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-primary"> Book Room </button>
+            <div class="col-md-4">
+                <div class="cardSection">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img class="roomImg" src="https://images.oyoroomscdn.com/uploads/hotel_image/39654/medium/c9373c2b206174a2.jpg">
+                            <h4>Room No : {{room?.RoomNo}}</h4>
+                            <ul>
+                                <li><b>Number of bed : </b>{{room?.NoOfBed}}</li>
+                                <li><b>AC : </b>{{room.AcnonAc?'Available':'Not available'}}</li>
+                                <li><b>Parking slot : </b>Available</li>
+                                <li><b>Breakfast : </b>Available</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12 mt-3 text-right">
+                            <button class="btn btn-primary pull-right"> Book Room </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-
-{{roomId}} {{customerId}}
