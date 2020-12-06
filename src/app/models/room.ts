@@ -1,6 +1,12 @@
 export class RoomModel {
-    id: number;
-    roomNo: string;
-    noOfBed: number;
-    acnonAc: boolean;
+    Id: number;
+    RoomNo: string;
+    NoOfBed: number;
+    AcnonAc: boolean;
+    IsOccupied: boolean;
+    createdBy: string;
+    created: string;
+    lastModifiedBy: string;
+    lastModified: string;
+    charges:string;
 }

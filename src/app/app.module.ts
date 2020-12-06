@@ -7,23 +7,25 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// RECOMMENDED
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    // CoreModule,
-    // HttpClientModule,
-    // BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

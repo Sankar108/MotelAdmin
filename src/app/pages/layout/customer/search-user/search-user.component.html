@@ -1,0 +1,24 @@
+<div class="container text-center">
+    <h3 class="w-100 text-center">Search customer</h3>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form #f="ngForm" (ngSubmit)="f.form.valid">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="FloorNo" list="customerList" [(ngModel)]="customerModel.Id" />
+                    <div class="input-group-append">
+                        <button type="button" class="input-group-text" id="btnExistuser" routerLink="/room/checkin/{{roomId}}/{{customerModel.Id}}" [disabled]="!customerModel.Id">Go</button>
+                    </div>
+                    <datalist id="customerList">
+                    <option [value]="customer.Id" *ngFor="let customer of customers">{{customer?.FirstName}}</option>
+                </datalist>
+                </div>
+            </form>
+            <h5>New user ?</h5>
+            <button type="button" class="btn btn-success" routerLink="/customer/register/1">Add + </button>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+</div>
+{{customerModel | json}} {{roomId}}

@@ -21,7 +21,7 @@ img {
 }
 
 .roomImg {
-    height: 150px;
+    height: 140px;
     padding: 5px;
 }
 
@@ -29,4 +29,10 @@ img {
     position: absolute !important;
     right: 25px !important;
     bottom: 15px !important;
+}
+
+#roomListPanel {
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+    overflow-x: hidden;
 }

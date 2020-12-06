@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    overflow: hidden !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: lightgray;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(189, 187, 187);
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.card {
+    box-shadow: 0 0 10px lightgray;
+}

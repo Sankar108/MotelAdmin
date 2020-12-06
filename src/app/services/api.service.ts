@@ -13,7 +13,7 @@ export class ApiService {
     private http: HttpClient,
   ) { }
 
-  
+
   public getMethod = 'get';
   public postMethod = 'post';
   public putMethod = 'put';
@@ -22,6 +22,8 @@ export class ApiService {
   public localAPIpath = environment.localhost + 'api/';
 
   public readonly roomURL = this.localAPIpath + 'RoomDetails';
+  public readonly customerURL = this.localAPIpath + 'CustomerInfo';
+  public readonly documentURL = this.localAPIpath + 'Document';
   public readonly registerSession = this.roomURL + 'RegisterSession';
 
   public apiCaller(type: string, url: string, data?: any, header?: any): any {
@@ -40,41 +42,37 @@ export class ApiService {
   }
 
   private post(url: string, data: any): any {
-    return this.http.post(url, data, { headers: this.getHeaders() }).pipe(
-      catchError(this.handleError),
+    return this.http.post(url, data).pipe(
       tap(result => {
-        this.CheckInvalidToken(result);
-      })
+        return result;
+      }),
+      catchError(this.handleError),
     );
   }
   private get(url: string): any {
     return this.http.get(url).pipe(
-      catchError(this.handleError),
       tap(result => {
-        this.CheckInvalidToken(result);
-      })
+        return result;
+      }),
+      catchError(this.handleError),
     );
   }
 
   private put(url: string, data: any): any {
     return this.http.put(url, data, { headers: this.getHeaders() }).pipe(
-      catchError(this.handleError),
       tap(result => {
-        this.CheckInvalidToken(result);
-      })
+        return result;
+      }),
+      catchError(this.handleError)
     );
   }
 
   private delete(url: string, data: any): any {
-    const options = {
-      headers: this.getHeaders(),
-      body: data,
-    };
-    return this.http.delete(url, options).pipe(
-      catchError(this.handleError),
+    return this.http.delete(url).pipe(
       tap(result => {
-        this.CheckInvalidToken(result);
-      })
+        return result;
+      }),
+      catchError(this.handleError)
     );
   }
 
