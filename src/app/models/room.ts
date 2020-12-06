@@ -1,5 +1,5 @@
 export class RoomModel {
-    Id: number;
+    Id: string;
     RoomNo: string;
     NoOfBed: number;
     AcnonAc: boolean;

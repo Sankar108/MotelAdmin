@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerModel, CustomerModel2 } from 'src/app/models/customer';
-import { RoomModel } from 'src/app/models/room';
+import { BookRoomModel, RoomModel } from 'src/app/models/room';
 import { CustomerService } from 'src/app/services/customer.service';
 import { RoomService } from 'src/app/services/room.service';
 import { UtilityService } from 'src/app/services/utility.service';
@@ -23,7 +23,8 @@ export class CheckinComponent implements OnInit {
     private utilityService: UtilityService,
     private route: ActivatedRoute,
     private customerService: CustomerService,
-    private roomService: RoomService
+    private roomService: RoomService,
+    private router: Router
   ) {
     this.utilityService.title = "CUSTOMER CHECKIN";
     this.roomId = this.route.snapshot.paramMap.get('roomId');
@@ -42,18 +43,17 @@ export class CheckinComponent implements OnInit {
     }
 
     if (cId == 0) {
-      alert('enter valid customer Id')
+      this.utilityService.ShowMsg("Enter valid customer Id", this.utilityService.error);
       return;
     }
 
     this.customerService.GetCustomerById(cId).subscribe((response: any) => {
       if (response.Succeeded) {
-        console.log(response.Data);
         this.customerModel = response.Data;
       }
     },
-      (err: HttpErrorResponse) => {
-        alert(err.message);
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
       }
     );
   };
@@ -62,11 +62,29 @@ export class CheckinComponent implements OnInit {
     this.roomService.GetRoomById(this.roomId).subscribe((response: any) => {
       if (response.Succeeded) {
         this.room = response.Data;
-        console.log('rooms ', this.room);
       }
     },
-      (err: HttpErrorResponse) => {
-        alert(err.message);
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
+      })
+  }
+
+  BookRoom() {
+    let bookRoomModel: BookRoomModel = new BookRoomModel();
+    bookRoomModel.roomId = this.roomId;
+    bookRoomModel.customerId = this.customerId;
+    bookRoomModel.checkInTime = '';
+    bookRoomModel.checkOutTime = '';
+
+    this.roomService.BookRoom(bookRoomModel).subscribe((response: any) => {
+      if (response.Succeeded) {
+        this.room = response.Data;
+        this.utilityService.ShowMsg('Room booked successfully', this.utilityService.success);
+        this.router.navigate(['/rooms/occupied']);
+      }
+    },
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
       })
   }
 }

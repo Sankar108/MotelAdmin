@@ -44,7 +44,7 @@
             <div class="col-md-4">
                 <div class="cardSection">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" *ngIf="room">
                             <img class="roomImg" src="https://images.oyoroomscdn.com/uploads/hotel_image/39654/medium/c9373c2b206174a2.jpg">
                             <h4>Room No : {{room?.RoomNo}}</h4>
                             <ul>
@@ -55,7 +55,7 @@
                             </ul>
                         </div>
                         <div class="col-md-12 mt-3 text-right">
-                            <button class="btn btn-primary pull-right"> Book Room </button>
+                            <button class="btn btn-primary pull-right" type="button" (click)="BookRoom()"> Book Room </button>
                         </div>
                     </div>
                 </div>

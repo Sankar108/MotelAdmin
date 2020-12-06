@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-    overflow: auto !important;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
