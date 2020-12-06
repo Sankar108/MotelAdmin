@@ -13,6 +13,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ToastrModule } from 'ngx-toastr';
 import { LoaderService } from './services/loader.service';
 import { PageLoaderComponent } from './shared/components/page-loader/page-loader.component';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { PageLoaderComponent } from './shared/components/page-loader/page-loader
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    
+    PopoverModule.forRoot()
   ],
   providers: [LoaderService],
   bootstrap: [AppComponent]

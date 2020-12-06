@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { RoomModel } from 'src/app/models/room';
+import { OccupiedRoomDetailModel, RoomModel } from 'src/app/models/room';
 import { RoomService } from 'src/app/services/room.service';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -16,13 +16,16 @@ export class RoomsComponent implements OnInit {
   roomStatus = "";
   pageTitle = "";
   rooms: RoomModel[] = [];
-
   roomBtnText = 'Book Room';
+
+  occupiedRoomList: OccupiedRoomDetailModel[] = [];
 
   underCleanRooms: RoomModel[] = [];
   occupideRooms: RoomModel[] = [];
   vacantRooms: RoomModel[] = [];
-
+  
+  title = 'Welcome word';
+  content = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
 
   constructor(
     private route: ActivatedRoute,
@@ -57,6 +60,7 @@ export class RoomsComponent implements OnInit {
         this.rooms = response.Data;
         if (this.roomStatus === 'occupied') {
           this.rooms = this.rooms.filter(r => r.IsOccupied === true && r.IsCleaned);
+          this.GetOccupiedRoomList();
         }
         else if (this.roomStatus === 'vacant') {
           this.rooms = this.rooms.filter(r => r.IsOccupied === false && r.IsCleaned);
@@ -100,7 +104,20 @@ export class RoomsComponent implements OnInit {
     }
   }
 
-  CleandRoom(roomID: any) {
+  GetOccupiedRoomList() {
+    this.roomService.GetOccupiedRoomList().subscribe((response: any) => {
+      if (response.Succeeded) {
+        this.occupiedRoomList = response.Data;
+        this.rooms.forEach(room => {
+          room.occupiedRoomData = this.occupiedRoomList.filter(r => r.RoomId == room.Id)[0];
+        });
+      }
+    },
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
+      })
+  }
 
+  CleandRoom(roomID: any) {
   }
 }

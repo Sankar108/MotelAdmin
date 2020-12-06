@@ -9,11 +9,28 @@
                     </div>
                     <div class="col-md-9">
                         <div class="containerPanel">
-                            <h4><b>Room No : </b> {{room.RoomNo}}</h4>
-                            <p><b>Number of beds : </b> {{room.NoOfBed}}</p>
-                            <p><b>Facility : </b>Parking slot, {{room.AcnonAc?'AC':'Non-Ac'}}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><b>Room No : </b> {{room.RoomNo}}</h4>
+                                    <p><b>Number of beds : </b> {{room.NoOfBed}}</p>
+                                    <p><b>Facility : </b>Parking slot, {{room.AcnonAc?'AC':'Non-Ac'}}</p>
+                                </div>
+                                <div class="col-md-6" *ngIf="room?.occupiedRoomData">
+                                    <table>
+                                        <tr>
+                                            <th>Customer : </th>
+                                            <td><button type="button" class="btn btn-info" [popover]="popTemplate" triggers="mouseenter:mouseleave" popoverTitle="Template ref content inside">{{room?.occupiedRoomData.CustomerName}}</button></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Checked in : </th>
+                                            <td>{{ room?.occupiedRoomData.CheckInTime | date: 'dd MMM yyyy - h:mm a'}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.Id)">{{roomBtnText}}</button>
                         </div>
+
                     </div>
                 </div>
 
@@ -21,3 +38,5 @@
         </div>
     </div>
 </div>
+
+<ng-template #popTemplate>Just another: {{content}}</ng-template>
