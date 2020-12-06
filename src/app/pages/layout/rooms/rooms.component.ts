@@ -76,15 +76,15 @@ export class RoomsComponent implements OnInit {
   SetroomStatus() {
     if (this.roomStatus === 'underclining') {
       this.roomBtnText = "cleaning";
-      this.pageTitle = "Under clean rooms"
+      this.pageTitle = "UNDERCLEAN ROOMS"
     }
     else if (this.roomStatus === 'occupied') {
       this.roomBtnText = 'Check out';
-      this.pageTitle = "Checked in rooms"
+      this.pageTitle = "OCCUPIED ROOMS"
     }
     else {
       this.roomBtnText = 'Book room';
-      this.pageTitle = "Vacant rooms"
+      this.pageTitle = "VACANT ROOMS"
     }
   }
 
