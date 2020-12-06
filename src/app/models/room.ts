@@ -10,7 +10,7 @@ export class RoomModel {
     lastModifiedBy: string;
     lastModified: string;
     charges: string;
-    occupiedRoomData
+    occupiedRoomData: OccupiedRoomDetailModel;
 }
 
 export class OccupiedRoomDetailModel {
