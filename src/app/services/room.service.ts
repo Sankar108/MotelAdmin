@@ -33,4 +33,9 @@ export class RoomService {
     let params= new HttpParams().set('id', roomId);
     return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "?" + params);
   }
+
+  GetRoomById1(roomId: any) {
+    let params= new HttpParams().set('id', roomId);
+    return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "/" + roomId);
+  }
 }
