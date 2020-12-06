@@ -38,10 +38,10 @@ export class RoomService {
   }
 
   GetOccupiedRoomDetailsById(roomId: any) {
-    return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "/" + roomId);
+    return this._api.apiCaller(this._api.getMethod, this._api.OccupiedRoomURL + "/" + roomId);
   }
 
   BookRoom(booRoomModel: BookRoomModel) {
-    return this._api.apiCaller(this._api.postMethod, this._api.roomURL, booRoomModel);
+    return this._api.apiCaller(this._api.postMethod, this._api.OccupiedRoomURL, booRoomModel);
   }
 }
