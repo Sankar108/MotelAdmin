@@ -4,10 +4,28 @@ export class RoomModel {
     NoOfBed: number;
     AcnonAc: boolean;
     IsOccupied: boolean;
-    IsCleaned:boolean;
+    IsCleaned: boolean;
     createdBy: string;
     created: string;
     lastModifiedBy: string;
     lastModified: string;
-    charges:string;
+    charges: string;
+    occupiedRoomData
+}
+
+export class OccupiedRoomDetailModel {
+    CheckInTime: string;
+    CheckOutTime: string;
+    RoomId: string;
+    CustomerId: string;
+    CustomerName: string;
+    Room: string;
+    Customer: string;
+}
+
+export class BookRoomModel {
+    checkInTime: string;
+    checkOutTime: string;
+    roomId: string;
+    customerId: string;
 }

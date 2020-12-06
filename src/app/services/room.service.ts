@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RoomModel } from '../models/room';
+import { BookRoomModel, RoomModel } from '../models/room';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -30,7 +30,18 @@ export class RoomService {
   }
 
   GetRoomById(roomId: any) {
-    // let params= new HttpParams().set('id', roomId);
     return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "/" + roomId);
+  }
+
+  GetOccupiedRoomList() {
+    return this._api.apiCaller(this._api.getMethod, this._api.OccupiedRoomURL);
+  }
+
+  GetOccupiedRoomDetailsById(roomId: any) {
+    return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "/" + roomId);
+  }
+
+  BookRoom(booRoomModel: BookRoomModel) {
+    return this._api.apiCaller(this._api.postMethod, this._api.roomURL, booRoomModel);
   }
 }
