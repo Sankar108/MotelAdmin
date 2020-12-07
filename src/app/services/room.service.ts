@@ -44,4 +44,9 @@ export class RoomService {
   BookRoom(booRoomModel: BookRoomModel) {
     return this._api.apiCaller(this._api.postMethod, this._api.OccupiedRoomURL, booRoomModel);
   }
+
+  GetRoomById1(roomId: any) {
+    let params= new HttpParams().set('id', roomId);
+    return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "/" + roomId);
+  }
 }

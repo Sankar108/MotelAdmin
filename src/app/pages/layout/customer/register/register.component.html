@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>new user detail and book</h2>
+    <h2>New user</h2>
     <div class="row">
         <div class="col-md-12 mt-2">
             <div class="card p-4">
@@ -29,7 +29,7 @@
                                         <div *ngIf="lastName.errors.required">Last name is required</div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <label for="document">Document</label>
                                     <select class="form-control" name="documentId" #documentId="ngModel" [(ngModel)]="customer.documentId" [ngClass]="{ 'is-invalid': (form.submitted && documentId.invalid) || (documentId.invalid && documentId.touched) }" required>
                                     <option value="undefined" selected disabled>Select Document</option>
@@ -39,7 +39,7 @@
                                         <div *ngIf="documentId.errors.required">Document is required</div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <label for="documentNo">Document Number</label>
                                     <input type="text" class="form-control" name="documentNo" #documentNo="ngModel" [(ngModel)]="customer.documentNo" placeholder="Document Number" [ngClass]="{ 'is-invalid': (form.submitted && documentNo.invalid) || (documentNo.invalid && documentNo.touched) }"
                                         required>
@@ -52,13 +52,6 @@
 
                         <div class="col-md-7">
                             <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="phoneNo">Telephone Number</label>
-                                    <input type="text" class="form-control" name="phoneNo" #phoneNo="ngModel" [(ngModel)]="customer.phoneNo" placeholder="Phone No" [ngClass]="{ 'is-invalid': (form.submitted && phoneNo.invalid) || (phoneNo.invalid && phoneNo.touched) }" required>
-                                    <div *ngIf="(form.submitted && phoneNo.invalid) || (phoneNo.invalid && phoneNo.touched)" class="invalid-feedback">
-                                        <div *ngIf="phoneNo.errors.required">Phone number is required</div>
-                                    </div>
-                                </div>
                                 <div class="form-group col-md-12">
                                     <label for="addressLine1">Address Line 1</label>
                                     <input type="text" class="form-control" name="addressLine1" #addressLine1="ngModel" [(ngModel)]="customer.addressLine1" placeholder="Address Line 1" [ngClass]="{ 'is-invalid': (form.submitted && addressLine1.invalid) || (addressLine1.invalid && addressLine1.touched) }"
@@ -73,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="country">Country</label>
                                     <select class="form-control" name="country" #country="ngModel" [(ngModel)]="customer.country" (change)="changeCountry($event)" [ngClass]="{ 'is-invalid': (form.submitted && country.invalid) || (country.invalid && country.touched) }" required>
                                       <option value="undefined" selected>Select Country</option>
@@ -84,7 +77,7 @@
                                         <div *ngIf="country.errors.required">Country is required</div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="state">State</label>
                                     <select class="form-control" name="state" #state="ngModel" [(ngModel)]="customer.state" [ngClass]="{ 'is-invalid': (form.submitted && state.invalid) || (state.invalid && state.touched) }" required>
                                       <option value="undefined" selected>Select State</option>
@@ -95,7 +88,7 @@
                                         <div *ngIf="state.errors.required">State is required</div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="city">City</label>
                                     <input type="text" class="form-control" name="city" #city="ngModel" [(ngModel)]="customer.city" [ngClass]="{ 'is-invalid': (form.submitted && city.invalid) || (city.invalid && city.touched) }" required>
                                     <div *ngIf="(form.submitted && city.invalid) || (city.invalid && city.touched)" class="invalid-feedback">
@@ -109,14 +102,28 @@
                                         <div *ngIf="zipcode.errors.required">Zipcode is required</div>
                                     </div>
                                 </div>
+                                <div class="form-group col-md-6">
+                                  <label for="phoneNo">Telephone Number</label>
+                                  <input type="text" class="form-control" name="phoneNo" #phoneNo="ngModel" [(ngModel)]="customer.phoneNo" placeholder="Phone No" [ngClass]="{ 'is-invalid': (form.submitted && phoneNo.invalid) || (phoneNo.invalid && phoneNo.touched) }" required>
+                                  <div *ngIf="(form.submitted && phoneNo.invalid) || (phoneNo.invalid && phoneNo.touched)" class="invalid-feedback">
+                                      <div *ngIf="phoneNo.errors.required">Phone number is required</div>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="form-row">
-                        <div class="form-group col-md-12 text-right">
-                            <button type="submit" class="btn btn-lg btn-primary">Book Room</button>
+                      <div class="form-group col-md-10 text-right">
+                        <div class="containerPanel pt-2">
+                          <span class="mr-5"><b>Room No : </b> {{room.RoomNo}}</span>
+                          <span class="mr-5"><b>Number of beds : </b> {{room.NoOfBed}}</span>
+                          <b>Facility : </b>Parking slot, {{room.AcnonAc?'AC':'Non-Ac'}}
                         </div>
+                      </div>
+                      <div class="form-group col-md-2 text-right">
+                         <button type="submit" class="btn btn-lg btn-primary">Book Room</button>
+                      </div>
                     </div>
                 </form>
             </div>
