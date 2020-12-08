@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RoomModel } from 'src/app/models/room';
+import { RoomCountModel } from 'src/app/models/room';
 import { RoomService } from 'src/app/services/room.service';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -10,32 +10,25 @@ import { UtilityService } from 'src/app/services/utility.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  allRooms: RoomModel[] = [];
-  occupiedRooms: RoomModel[] = [];
-  vacantRooms: RoomModel[] = [];
-  undercleanRooms: RoomModel[] = [];
-
   constructor(
     public utilityService: UtilityService,
-    private roomService: RoomService
+    private roomService: RoomService,
   ) {
     this.utilityService.title = "Dashboard";
   }
 
+  roomCountList: RoomCountModel = new RoomCountModel();
+
   ngOnInit(): void {
-    this.GetRooms();
+    this.GetAllRoomCount();
   }
 
-  GetRooms() {
+  GetAllRoomCount() {
     this.utilityService.showLoader();
-    this.roomService.GetRooms().subscribe((response: any) => {
+    this.roomService.GetAllRoomCount().subscribe((response: any) => {
       this.utilityService.hideLoader();
-      if (response.Succeeded) {
-        this.allRooms = response.Data;
-        this.occupiedRooms = this.allRooms.filter(r => r.IsOccupied === true && r.IsCleaned);
-        this.vacantRooms = this.allRooms.filter(r => r.IsOccupied === false && r.IsCleaned);
-        this.undercleanRooms = this.allRooms.filter(r => !r.IsOccupied === false && !r.IsCleaned);
-      }
+      if (response.Succeeded)
+        this.roomCountList = response.Data;
     },
       (err: HttpErrorResponse) => {
         this.utilityService.hideLoader();
@@ -43,3 +36,4 @@ export class DashboardComponent implements OnInit {
       })
   }
 }
+

@@ -2,17 +2,17 @@
     <div class="row mt-3">
         <div class="col-md-4">
             <button class="btn btn-lg btn-menu" type="button" routerLink="/rooms/occupied">
-                Occupied Rooms <span class="circle">{{occupiedRooms?.length}}</span>
+                Occupied Rooms <span class="circle">{{roomCountList?.OccupiedRoomCount}}</span>
             </button>
         </div>
         <div class="col-md-4">
             <button class="btn btn-lg btn-menu" type="button" routerLink="/rooms/vacant">
-                Vacant Rooms<span class="circle">{{vacantRooms?.length}}</span>
+                Vacant Rooms<span class="circle">{{roomCountList?.VacantRooms}}</span>
             </button>
         </div>
         <div class="col-md-4">
             <button class="btn btn-lg btn-menu" type="button" routerLink="/rooms/underclining">
-                Under Cleaning Rooms<span class="circle">{{undercleanRooms?.length}}</span>
+                Under Cleaning Rooms<span class="circle">{{roomCountList?.UnderCleanedRoomCount}}</span>
             </button>
         </div>
     </div>

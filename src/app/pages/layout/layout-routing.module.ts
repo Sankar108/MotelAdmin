@@ -44,7 +44,7 @@ const routes: Routes = [
     component: CheckinComponent,
   },
   {
-    path: 'room/checkout/:roomId',
+    path: 'room/checkout/:roomId/:customerId',
     component: CheckoutComponent,
   },
   

@@ -39,3 +39,4 @@ export class DocumentModel {
   LastModified: string;
   LastModifiedBy: string;
 }
+

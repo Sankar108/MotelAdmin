@@ -46,7 +46,32 @@ export class RoomService {
   }
 
   GetRoomById1(roomId: any) {
-    let params= new HttpParams().set('id', roomId);
+    let params = new HttpParams().set('id', roomId);
     return this._api.apiCaller(this._api.getMethod, this._api.roomURL + "/" + roomId);
+  }
+
+  SetCleanedRoom(roomId: any) {
+    let params = new HttpParams().set('id', roomId);
+    return this._api.apiCaller(this._api.getMethod, this._api.setCleanedRoom + "/" + roomId);
+  }
+
+  GetAllRoomCount() {
+    return this._api.apiCaller(this._api.getMethod, this._api.GetAllRoomCount);
+  }
+
+  GetAllOccupiedRoom() {
+    return this._api.apiCaller(this._api.getMethod, this._api.GetAllOccupiedRoom);
+  }
+
+  GetAllVacantRoom() {
+    return this._api.apiCaller(this._api.getMethod, this._api.GetAllVacantRoom);
+  }
+
+  GetAllUnderCleaningRoom() {
+    return this._api.apiCaller(this._api.getMethod, this._api.GetAllUnderCleaningRoom);
+  }
+
+  CheckOutRoom(roomId: any, customerId: any) {
+    return this._api.apiCaller(this._api.getMethod, this._api.checkOutRoom + "/" + roomId +  "/" + customerId);
   }
 }

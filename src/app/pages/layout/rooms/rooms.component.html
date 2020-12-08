@@ -1,7 +1,8 @@
 <div class="container">
     <h3>{{pageTitle}}</h3>
     <div class="row" id="roomListPanel">
-        <div class="col-md-12 mt-2" *ngFor="let room of rooms">
+        <div class="col-md-12 mt-2" *ngFor="let room of rooms;let i = index">
+
             <div class="card">
                 <div class="row">
                     <div class="col-md-3">
@@ -15,28 +16,29 @@
                                     <p><b>Number of beds : </b> {{room.NoOfBed}}</p>
                                     <p><b>Facility : </b>Parking slot, {{room.AcnonAc?'AC':'Non-Ac'}}</p>
                                 </div>
-                                <div class="col-md-6" *ngIf="room?.occupiedRoomData">
+                                <div class="col-md-6">
                                     <table>
-                                        <tr>
+                                        <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
                                             <th>Customer : </th>
-                                            <td><button type="button" class="btn btn-info" [popover]="popTemplate" triggers="mouseenter:mouseleave" popoverTitle="Template ref content inside">{{room?.occupiedRoomData.CustomerName}}</button></td>
+                                            <td>{{occupiedCustomerList[i].FirstName}} {{occupiedCustomerList[i].MiddleName}} {{occupiedCustomerList[i].LastName}}</td>
                                         </tr>
-                                        <tr>
-                                            <th>Checked in : </th>
-                                            <td>{{ room?.occupiedRoomData.CheckInTime | date: 'dd MMM yyyy - h:mm a'}}</td>
+                                        <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
+                                            <th>Phone : </th>
+                                            <td>{{occupiedCustomerList[i].PhoneNo}}</td>
+                                        </tr>
+                                        <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
+                                            <th>Check in : </th>
+                                            <td>{{occupiedCustomerList[i].CheckinTime | date: 'dd MMM yyyy - h:mm a'}}</td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.Id)">{{roomBtnText}}</button>
+                            <button *ngIf="occupiedCustomerList && occupiedCustomerList.length>0" type="button" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.Id,occupiedCustomerList[i].Id)">{{roomBtnText}}</button>
+                            <button *ngIf="occupiedCustomerList && occupiedCustomerList.length==0" type="button" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.Id)">{{roomBtnText}}</button>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-
-<ng-template #popTemplate>Just another: {{content}}</ng-template>

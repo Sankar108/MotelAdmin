@@ -29,3 +29,37 @@ export class BookRoomModel {
     roomId: string;
     customerId: string;
 }
+
+export class RoomCountModel {
+    VacantRooms: number;
+    OccupiedRoomCount: number;
+    UnderCleanedRoomCount: number;
+}
+
+export class occuupiedCustomerInfo {
+    AddressLine1: string;
+    AddressLine2: string;
+    City: string;
+    Country: string;
+    Created: string;
+    CreatedBy: string;
+    Document: string;
+    DocumentId: string;
+    DocumentNo: string;
+    FirstName: string;
+    Id: 2
+    LastModified: string;
+    LastModifiedBy: string;
+    LastName: string;
+    MiddleName: string;
+    PhoneNo: string;
+    State: string;
+    Zipcode: string;
+    CheckinTime: string;
+}
+
+export class OccupiedRoomModel {
+    CustomerInfo: occuupiedCustomerInfo;
+    RoomDetails: RoomModel;
+    CheckinTime: string;
+}   

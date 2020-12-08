@@ -22,9 +22,16 @@ export class ApiService {
   public localAPIpath = environment.localhost + 'api/';
 
   public readonly roomURL = this.localAPIpath + 'RoomDetails';
+  public readonly GetAllRoomCount = this.roomURL + '/GetAllRoomCount';
+  public readonly GetAllVacantRoom = this.roomURL + '/GetAllVacantRoom';
+  public readonly GetAllOccupiedRoom = this.roomURL + '/GetAllOccupiedRoom';
+  public readonly GetAllUnderCleaningRoom = this.roomURL + '/GetAllUnderCleaningRoom';
+
   public readonly documentURL = this.localAPIpath + 'Document';
   public readonly customerURL = this.localAPIpath + 'CustomerInfo';
   public readonly OccupiedRoomURL = this.localAPIpath + 'OccupiedRoomDetail';
+  public readonly setCleanedRoom = this.OccupiedRoomURL + '/SetCleanedRoom';
+  public readonly checkOutRoom = this.OccupiedRoomURL + '/CheckOutRoom';
 
   public apiCaller(type: string, url: string, data?: any, header?: any): any {
     if (type === 'get') {

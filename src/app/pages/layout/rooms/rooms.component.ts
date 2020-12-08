@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { OccupiedRoomDetailModel, RoomModel } from 'src/app/models/room';
+import { OccupiedRoomDetailModel, OccupiedRoomModel, occuupiedCustomerInfo, RoomModel } from 'src/app/models/room';
 import { RoomService } from 'src/app/services/room.service';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -16,14 +16,15 @@ export class RoomsComponent implements OnInit {
   roomStatus = "";
   pageTitle = "";
   rooms: RoomModel[] = [];
+  occupiedCustomerList: occuupiedCustomerInfo[] = [];
   roomBtnText = 'Book Room';
 
-  occupiedRoomList: OccupiedRoomDetailModel[] = [];
+  occupiedRoomList: OccupiedRoomModel[] = [];
 
   underCleanRooms: RoomModel[] = [];
   occupideRooms: RoomModel[] = [];
   vacantRooms: RoomModel[] = [];
-  
+
   title = 'Welcome word';
   content = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
 
@@ -44,57 +45,33 @@ export class RoomsComponent implements OnInit {
         this.roomStatus = "vacant";
       }
     });
-
-    this.GetRooms();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  GetRooms() {
-    this.utilityService.showLoader();
-    this.roomService.GetRooms().subscribe((response: any) => {
-      this.utilityService.hideLoader();
-      if (response.Succeeded) {
-        this.rooms = response.Data;
-        if (this.roomStatus === 'occupied') {
-          this.rooms = this.rooms.filter(r => r.IsOccupied === true && r.IsCleaned);
-          this.GetOccupiedRoomList();
-        }
-        else if (this.roomStatus === 'vacant') {
-          this.rooms = this.rooms.filter(r => r.IsOccupied === false && r.IsCleaned);
-        }
-        else if (this.roomStatus === 'underclining') {
-          this.rooms = this.rooms.filter(r => !r.IsOccupied === false && !r.IsCleaned);
-        }
-        console.log('rooms ', this.rooms);
-      }
-    },
-      (err: HttpErrorResponse) => {
-        this.utilityService.hideLoader();
-        this.utilityService.ShowMsg(err.message, this.utilityService.error);
-      })
-  }
-
   SetroomStatus() {
     if (this.roomStatus === 'underclining') {
-      this.roomBtnText = "cleaning";
-      this.pageTitle = "UNDERCLEAN ROOMS"
+      this.roomBtnText = "Set as cleaned";
+      this.pageTitle = "UNDERCLEAN ROOMS";
+      this.GetAllUnderCleaningRoom();
     }
     else if (this.roomStatus === 'occupied') {
       this.roomBtnText = 'Check out';
-      this.pageTitle = "OCCUPIED ROOMS"
+      this.pageTitle = "OCCUPIED ROOMS";
+      this.GetOccupiedRoomList();
     }
     else {
       this.roomBtnText = 'Book room';
-      this.pageTitle = "VACANT ROOMS"
+      this.pageTitle = "VACANT ROOMS";
+      this.GetAllVacantRoom();
     }
   }
 
-  SubmitRoom(roomID: any) {
+  SubmitRoom(roomID: any, customerId = 0) {
     if (this.roomStatus === 'occupied') {
-      this.router.navigate(['/room/checkout', roomID]);
+      this.router.navigate(['/room/checkout', roomID,customerId]);
     }
     else if (this.roomStatus === 'vacant') {
       this.router.navigate(['/customer/', roomID]);
@@ -105,11 +82,15 @@ export class RoomsComponent implements OnInit {
   }
 
   GetOccupiedRoomList() {
-    this.roomService.GetOccupiedRoomList().subscribe((response: any) => {
+    this.roomService.GetAllOccupiedRoom().subscribe((response: any) => {
       if (response.Succeeded) {
+        this.rooms = [];
+        this.occupiedCustomerList = [];
         this.occupiedRoomList = response.Data;
-        this.rooms.forEach(room => {
-          room.occupiedRoomData = this.occupiedRoomList.filter(r => r.RoomId == room.Id)[0];
+        this.occupiedRoomList.forEach(occupiedRoom => {
+          this.rooms.push(occupiedRoom.RoomDetails);
+          occupiedRoom.CustomerInfo.CheckinTime = occupiedRoom.CheckinTime;
+          this.occupiedCustomerList.push(occupiedRoom.CustomerInfo);
         });
       }
     },
@@ -118,6 +99,38 @@ export class RoomsComponent implements OnInit {
       })
   }
 
+  GetAllVacantRoom() {
+    this.roomService.GetAllVacantRoom().subscribe((response: any) => {
+      if (response.Succeeded) {
+        this.rooms = response.Data;
+      }
+    },
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
+      })
+  }
+
+  GetAllUnderCleaningRoom() {
+    this.roomService.GetAllUnderCleaningRoom().subscribe((response: any) => {
+      if (response.Succeeded) {
+        this.rooms = response.Data;
+      }
+    },
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
+      })
+  }
+
   CleandRoom(roomID: any) {
+    this.roomService.SetCleanedRoom(roomID).subscribe((response: any) => {
+      if (response.Succeeded) {
+        console.log(response.Data);
+        this.utilityService.ShowMsg('room is cleaned', this.utilityService.success);
+        this.GetAllUnderCleaningRoom();
+      }
+    },
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
+      })
   }
 }

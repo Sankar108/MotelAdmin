@@ -1,11 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CountryModel, StateModel } from 'src/app/models/country';
 import { CustomerModel } from 'src/app/models/customer';
 import { DocumentModel } from 'src/app/models/document';
-import { RoomModel } from 'src/app/models/room';
+import { BookRoomModel, RoomModel } from 'src/app/models/room';
 import { CountryService } from 'src/app/services/country.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { DocumentService } from 'src/app/services/document.service';
@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   room: RoomModel = <RoomModel>{};
   countryName: string = '';
   roomId = '';
+  customerId = '';
 
   constructor(
     private countryService: CountryService,
@@ -32,7 +33,8 @@ export class RegisterComponent implements OnInit {
     private customerService: CustomerService,
     public utilityService: UtilityService,
     private roomService: RoomService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.utilityService.title = 'Motel';
     this.roomId = this.route.snapshot.paramMap.get('roomId');
@@ -45,6 +47,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    if(form.valid===false){
+      return;
+    }
+
     this.customer.country = this.countryName;
     this.AddCustomer(this.customer);
   }
@@ -85,12 +91,14 @@ export class RegisterComponent implements OnInit {
   AddCustomer(customer: CustomerModel) {
     this.customerService.AddCustomer(customer).subscribe(
       (response: any) => {
-        if (response.succeeded) {
-          console.log(response.data);
+        if (response.Succeeded) {
+          this.customerId = response.Data;
+          this.utilityService.ShowMsg('customer registered successfully', this.utilityService.success);
+          this.router.navigate(['room/checkin/',this.roomId , this.customerId]);
         }
       },
       (err: HttpErrorResponse) => {
-        alert(err.message);
+        this.utilityService.ShowMsg(err.message, this.utilityService.error);
       }
     );
   }
@@ -102,7 +110,6 @@ export class RegisterComponent implements OnInit {
         this.utilityService.hideLoader();
         if (response.Succeeded) {
           this.room = response.Data;
-          console.log('rooms ', this.room);
         }
       },
       (err: HttpErrorResponse) => {

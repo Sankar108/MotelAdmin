@@ -1,9 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RoomModel } from 'src/app/models/room';
 import { RoomService } from 'src/app/services/room.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-checkout',
@@ -21,13 +22,18 @@ export class CheckoutComponent implements OnInit {
   bsValue = new Date();
   maxDate = new Date();
   checkoutForm: FormGroup;
+  customerId = '';
 
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomService,
     private formBuilder: FormBuilder,
+    private utilityService: UtilityService,
+    private router:Router
   ) {
     this.roomId = this.route.snapshot.paramMap.get('roomId');
+    this.customerId = this.route.snapshot.paramMap.get('customerId');
+
     this.maxDate.setDate(this.maxDate.getDate() + 7);
   }
 
@@ -44,10 +50,11 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.CheckOutRoom();
   }
 
   CalcTotal() {
-    this.totalCharge = parseInt(this.charge) + parseInt(this.extraCharge) ;
+    this.totalCharge = parseInt(this.charge) + parseInt(this.extraCharge);
   }
 
   GetRoomById() {
@@ -57,8 +64,20 @@ export class CheckoutComponent implements OnInit {
         console.log('rooms ', this.room);
       }
     },
-      (err: HttpErrorResponse) => {
-        alert(err.message);
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
+      })
+  }
+
+  CheckOutRoom() {
+    this.roomService.CheckOutRoom(this.roomId, this.customerId).subscribe((response: any) => {
+      if (response.Succeeded) {
+        this.utilityService.ShowMsg(response.Message, this.utilityService.success);
+        this.router.navigate(['/rooms/underclining'])
+      }
+    },
+      (error: HttpErrorResponse) => {
+        this.utilityService.ShowMsg(error.message, this.utilityService.error);
       })
   }
 }
