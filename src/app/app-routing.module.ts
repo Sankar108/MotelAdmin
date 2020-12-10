@@ -1,4 +1,4 @@
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
@@ -20,11 +20,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      // useHash: true,
+      useHash: true,
       scrollPositionRestoration: 'enabled'
     })
   ],
   exports: [RouterModule],
-  providers:[Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
+  providers:[Location, {provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class AppRoutingModule { }
