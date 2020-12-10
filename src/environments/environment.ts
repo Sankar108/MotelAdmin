@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  localhost: "http://localhost:57712/"
+  localhost: "http://bhaveshislearnin-001-site1.itempurl.com/"
 };
 
 /*
