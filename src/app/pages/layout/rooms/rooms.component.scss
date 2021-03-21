@@ -6,6 +6,15 @@
     cursor: pointer;
 }
 
+.main-banner {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+    color: black;
+    height: 210px;
+}
+
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -21,7 +30,12 @@ img {
 }
 
 .roomImg {
-    height: 140px;
+    height: 160px;
+    padding: 5px;
+}
+
+.sideroomImg {
+    height: 50px;
     padding: 5px;
 }
 
@@ -35,4 +49,67 @@ img {
     max-height: calc(100vh - 150px);
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+.btndetails {
+    position: absolute !important;
+    right: 120px !important;
+    bottom: 15px !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: rgb(2, 101, 114);
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+.owl-next h2,
+.owl-prev h2 {
+    background: hsla(0, 0%, 100%, .1);
+    font-weight: 200;
+    border-radius: 50%;
+    color: #505050;
+    width: 55px;
+    height: 55px;
+    border: 2px solid #d4d4d4;
+    cursor: pointer;
+    font-size: 40px;
+    line-height: 55px;
+    text-align: center;
+}
+
+.font4 {
+    font-size: 4rem;
+}
+
+.product-ajax-grid {
+    margin-top: 15px;
+}
+
+.smallimg {
+    width: 100%;
+    height: 52px;
+    padding: 2px;
+}
+
+.smallimg img {
+    width: auto;
+    height: 50px;
 }

@@ -25,6 +25,6 @@ const routes: Routes = [
     })
   ],
   exports: [RouterModule],
-  providers:[Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
+  // providers:[Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 export class AppRoutingModule { }

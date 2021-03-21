@@ -72,6 +72,10 @@ export class RoomService {
   }
 
   CheckOutRoom(roomId: any, customerId: any) {
-    return this._api.apiCaller(this._api.getMethod, this._api.checkOutRoom + "/" + roomId +  "/" + customerId);
+    return this._api.apiCaller(this._api.getMethod, this._api.checkOutRoom + "/" + roomId + "/" + customerId);
+  }
+
+  AddRoomDetails(formData: FormData) {
+    return this._api.apiCaller(this._api.postMethod, this._api.roomURL, formData);
   }
 }

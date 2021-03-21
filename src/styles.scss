@@ -42,3 +42,97 @@ body {
     width: 250px;
     max-width: 100%;
 }
+
+// ------
+.font4 {
+    font-size: 4rem;
+}
+
+.product-ajax-grid {
+    margin-top: 15px;
+}
+
+.owl-carousel {
+    display: flex !important;
+}
+
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+.txt-darkgreen {
+    color: darkgreen !important;
+}
+
+.productImage div {
+    display: inline-flex !important;
+}
+
+a {
+    cursor: pointer !important;
+}
+
+figure {
+    cursor: pointer !important;
+    border: 1px solid rgba(0, 0, 0, 0) !important;
+}
+
+figure:hover {
+    border: 1px solid darkgrey !important;
+}
+
+@media (max-width: 767px) {
+    .owl-prev h1,
+    .owl-next h1 {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.owl-theme .owl-nav [class*=owl-] {
+    color: #FFF;
+    font-size: 14px;
+    margin: 5px;
+    padding: 4px 7px;
+    background: #fffdfd !important;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.owl-nav {
+    display: flex !important;
+    height: 75px !important;
+}
+
+.owl-prev {
+    position: absolute !important;
+    top: 28% !important;
+    left: 0px !important;
+}
+
+.owl-next {
+    position: absolute !important;
+    right: 0px !important;
+    top: 28% !important;
+}
+
+.owl-theme .owl-nav [class*=owl-] {
+    background: transparent !important;
+}
+
+.owl-item {
+    margin: auto !important;
+}
+
+.owl-prev h2,
+.owl-next h2 {
+    // background: rgba(255, 255, 255, 0.3);
+    font-weight: 200;
+    border-radius: 50%;
+    color: #505050;
+    width: 50px;
+    height: 50px;
+    cursor: pointer !important;
+    border: 2px solid #d4d4d4;
+    cursor: pointer;
+    font-size: 5rem !important;
+}

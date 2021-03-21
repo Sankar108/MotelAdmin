@@ -23,7 +23,7 @@ export class ApiService {
 
   public readonly roomURL = this.localAPIpath + 'RoomDetails';
   public readonly GetAllRoomCount = this.roomURL + '/GetAllRoomCount';
-  public readonly GetAllVacantRoom = this.roomURL + '/GetAllVacantRoom';
+  public readonly GetAllVacantRoom = this.roomURL;
   public readonly GetAllOccupiedRoom = this.roomURL + '/GetAllOccupiedRoom';
   public readonly GetAllUnderCleaningRoom = this.roomURL + '/GetAllUnderCleaningRoom';
 

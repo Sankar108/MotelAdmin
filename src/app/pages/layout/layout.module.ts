@@ -3,14 +3,17 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { CheckinComponent } from './customer/checkin/checkin.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+// import { SharedModule } from 'src/app/shared/shared.module';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RegisterComponent } from './customer/register/register.component';
 import { RoomInfoComponent } from './rooms/room-info/room-info.component';
 import { CheckoutComponent } from './rooms/checkout/checkout.component';
 import { SearchUserComponent } from './customer/search-user/search-user.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule,FormGroup } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { AddRoomComponent } from './rooms/add-room/add-room.component';
+import { NgxSummernoteModule } from 'ngx-summernote';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -20,15 +23,18 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     RoomsComponent,
     RegisterComponent,
     SearchUserComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AddRoomComponent
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    SharedModule,
+    // SharedModule,
     BsDatepickerModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,  
+    NgxSummernoteModule,
+    CarouselModule
   ],
 })
 

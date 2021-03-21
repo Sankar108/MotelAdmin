@@ -1,0 +1,58 @@
+.note-editable {
+    height: 100px !important;
+}
+
+.card {
+    padding: 15px;
+}
+
+.thumbImg {
+    height: 150px;
+}
+
+label {
+    margin-bottom: 0.2rem;
+}
+
+.owl-next h2,
+.owl-prev h2 {
+    background: hsla(0, 0%, 100%, .6);
+    font-weight: 200;
+    border-radius: 50%;
+    color: #505050;
+    width: 55px;
+    height: 55px;
+    border: 2px solid #d4d4d4;
+    cursor: pointer;
+    font-size: 40px;
+    line-height: 55px;
+    text-align: center;
+}
+
+.font4 {
+    font-size: 4rem;
+}
+
+.product-ajax-grid {
+    margin-top: 15px;
+}
+
+.owl-carousel {
+    display: flex !important;
+}
+
+.owl-prev h1,
+.owl-next h1,
+.owl-prev h2,
+.owl-next h2 {
+    background: rgba(255, 255, 255, 0.3);
+    font-weight: 200;
+    border-radius: 50%;
+    color: #505050;
+    width: 55px;
+    height: 55px;
+    cursor: pointer !important;
+    border: 2px solid #d4d4d4;
+    cursor: pointer;
+    font-size: 5rem;
+}

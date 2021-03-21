@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  localhost: "http://bhaveshislearnin-001-site1.itempurl.com/"
+  // localhost: "http://bhaveshpatel751-001-site1.btempurl.com/",
+  localhost: "http://bhaveshpatel751-001-site1.btempurl.com/"
 };
 
 /*

@@ -13,6 +13,28 @@ export class RoomModel {
     occupiedRoomData: OccupiedRoomDetailModel;
 }
 
+export class Facility {
+    Id: string;
+    Value: string;
+}
+
+export class RoomDetails {
+    Id: string;
+    RoomNo: string;
+    Facilities: string[] = [];
+    RoomSize: string;
+    RoomTypeId: string;
+    RoomType: string;
+    Description: string;
+    Policy: string;
+    Images: File[];
+    Size: string;
+    NoOfBed: string;
+    AcnonAc: boolean;
+    IsOccupied: boolean;
+    IsCleaned: boolean;
+}
+
 export class OccupiedRoomDetailModel {
     CheckInTime: string;
     CheckOutTime: string;

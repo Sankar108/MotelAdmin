@@ -1,0 +1,64 @@
+<div class="container mt-2">
+    <a class="btn btn-primary float-right" routerLink="/rooms/vacant" style="width:100px;">Room List</a>
+    <h2>Add Room Details</h2>
+    <div class="card">
+        <!-- <form name="frmAddRoom" #frmAddRoom="ngForm" (ngSubmit)="frmAddRoom.form.valid && SaveRoom()"> -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 mt-2">
+                        <label>Room Number</label>
+                        <input type="text" class="form-control" name="RoomNo" #RoomNo="ngModel" [(ngModel)]="roomDetails.RoomNo" />
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <label>Type</label>
+                        <select class="form-control" name="RoomTypeId" #RoomTypeId="ngModel" [(ngModel)]="roomDetails.RoomTypeId">
+                                <option value="1">Normal</option>
+                                <option value="2">VIP</option>
+                                <option value="3">Premium</option>
+                            </select>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <label>Size <small>(in square feet)</small></label>
+                        <input type="text" class="form-control" name="Size" #Size="ngModel" [(ngModel)]="roomDetails.Size" />
+                    </div>
+                    <div class="col-md-6 mt-2">
+                        <label>Beds</label>
+                        <input type="text" class="form-control" [(ngModel)]="roomDetails.NoOfBed" />
+                    </div>
+
+                    <div class="col-md-12 mt-2">
+                        <label class="mr-2">Facilities : </label>
+                        <span *ngFor="let item of facilities">
+                                <input type="checkbox" (change)="AddtoFacility($event)" [value]="item.id" facilities class="ml-3 mr-1" />{{item.name}}
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <label>Description</label>
+                        <textarea id="txtDescription" class="form-control" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <label for="file">Upload Images</label>
+                <div class="form-group">
+                    <input type="file" id="file" multiple (change)="onFileChange($event)" />
+                </div>
+            </div>
+            <img class="col-md-2 mt-2 thumbImg" *ngFor='let url of images' [src]="url" />
+
+            <div class="col-md-12">
+                <button type="button" (click)="SaveRoom()" class="btn btn-primary float-right">Save</button>
+            </div>
+        </div>
+        <!-- </form> -->
+        <br />
+    </div>
+</div>

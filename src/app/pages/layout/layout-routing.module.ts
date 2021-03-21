@@ -8,12 +8,15 @@ import { RegisterComponent } from './customer/register/register.component';
 import { RoomInfoComponent } from './rooms/room-info/room-info.component';
 import { CheckoutComponent } from './rooms/checkout/checkout.component';
 import { SearchUserComponent } from './customer/search-user/search-user.component';
+import { AddRoomComponent } from './rooms/add-room/add-room.component';
 
 const routes: Routes = [
+  
   {
     path: '',
     redirectTo: 'dashboard',
   },
+  { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
   
   {
@@ -32,7 +35,7 @@ const routes: Routes = [
     data : {roomStatus : 'vacant'}
   },
   {
-    path: 'roomInfo/:roomId',
+    path: 'roomdetails/:roomId',
     component: RoomInfoComponent,
   },
   {
@@ -46,6 +49,10 @@ const routes: Routes = [
   {
     path: 'room/checkout/:roomId/:customerId',
     component: CheckoutComponent,
+  },
+  {
+    path: 'room/add',
+    component: AddRoomComponent,
   },
   
   {

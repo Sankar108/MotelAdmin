@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { OccupiedRoomDetailModel, OccupiedRoomModel, occuupiedCustomerInfo, RoomModel } from 'src/app/models/room';
 import { RoomService } from 'src/app/services/room.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-rooms',
@@ -28,11 +29,36 @@ export class RoomsComponent implements OnInit {
   title = 'Welcome word';
   content = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
 
+  imgpath = 'https://raw.githubusercontent.com/Sankar108/MotelAdminPublish/main/assets/images/';
+
+  imageIndexList=[4,5,6,10];
+
+  bannerOptions: any = {
+    loop: true,
+    margin: 0,
+    autoplay: false,
+    responsiveClass: true,
+    dots: false,
+    navText: ['<h2><</h2>', '<h2>></h2>'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      480: {
+        items: 1
+      },
+      940: {
+        items: 1
+      }
+    },
+    nav: true
+  }
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomService,
     private router: Router,
-    private utilityService: UtilityService
+    private utilityService: UtilityService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -45,6 +71,10 @@ export class RoomsComponent implements OnInit {
         this.roomStatus = "vacant";
       }
     });
+  }
+
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 
   ngOnDestroy() {
@@ -71,7 +101,7 @@ export class RoomsComponent implements OnInit {
 
   SubmitRoom(roomID: any, customerId = 0) {
     if (this.roomStatus === 'occupied') {
-      this.router.navigate(['/room/checkout', roomID,customerId]);
+      this.router.navigate(['/room/checkout', roomID, customerId]);
     }
     else if (this.roomStatus === 'vacant') {
       this.router.navigate(['/customer/', roomID]);

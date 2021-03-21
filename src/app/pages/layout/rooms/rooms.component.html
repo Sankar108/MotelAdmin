@@ -1,40 +1,68 @@
-<div class="container">
+<div class="container-fluid">
     <h3>{{pageTitle}}</h3>
-    <div class="row" id="roomListPanel">
-        <div class="col-md-12 mt-2" *ngFor="let room of rooms;let i = index">
+    <div class="row" id="roomListPanel-">
+        <div class="col-md-2 pr-0">
+            <div class="w-100" style="min-height: 80vh;background: lightcyan;">
+            </div>
+        </div>
 
-            <div class="card">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="roomImg" src="https://images.oyoroomscdn.com/uploads/hotel_image/39654/medium/c9373c2b206174a2.jpg">
-                    </div>
-                    <div class="col-md-9">
-                        <div class="containerPanel">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4><b>Room No : </b> {{room.RoomNo}}</h4>
-                                    <p><b>Number of beds : </b> {{room.NoOfBed}}</p>
-                                    <p><b>Facility : </b>Parking slot, {{room.AcnonAc?'AC':'Non-Ac'}}</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <table>
-                                        <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
-                                            <th>Customer : </th>
-                                            <td>{{occupiedCustomerList[i].FirstName}} {{occupiedCustomerList[i].MiddleName}} {{occupiedCustomerList[i].LastName}}</td>
-                                        </tr>
-                                        <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
-                                            <th>Phone : </th>
-                                            <td>{{occupiedCustomerList[i].PhoneNo}}</td>
-                                        </tr>
-                                        <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
-                                            <th>Check in : </th>
-                                            <td>{{occupiedCustomerList[i].CheckinTime | date: 'dd MMM yyyy - h:mm a'}}</td>
-                                        </tr>
-                                    </table>
+        <div class="col-md-10">
+            <div class="col-md-12 mt-2" *ngFor="let room of rooms">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-5" style="display: flex;">
+                            <div style="width:80%">
+                                <owl-carousel-o [options]="bannerOptions">
+                                    <ng-template carouselSlide *ngFor="let imageIndex of imageIndexList;">
+                                        <section class="main-banner" style="background-image: url({{imgpath}}{{imageIndex}}.jpg);">
+                                            <div class="hero-title">
+                                            </div>
+                                        </section>
+                                    </ng-template>
+                                </owl-carousel-o>
+                            </div>
+                            <div style="width:20%">
+                                <div class="smallimg" *ngFor="let imageIndex of imageIndexList;">
+                                    <img src="{{imgpath}}{{imageIndex}}.jpg">
                                 </div>
                             </div>
-                            <button *ngIf="occupiedCustomerList && occupiedCustomerList.length>0" type="button" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.Id,occupiedCustomerList[i].Id)">{{roomBtnText}}</button>
-                            <button *ngIf="occupiedCustomerList && occupiedCustomerList.length==0" type="button" class="btn btn-primary btnRoomSubmit" (click)="SubmitRoom(room.Id)">{{roomBtnText}}</button>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="containerPanel">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5><b>Room No : </b> {{room.RoomNo}}</h5>
+                                        <label><b>Beds : </b> {{room.NoOfBed}}</label>
+                                        <p>
+                                            <b>Facility : </b>
+                                            <span *ngFor="let facility of room.Facilities" class="ml-2">
+                                                <i class="fa fa-plus"></i>{{facility.Value}}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <table>
+                                            <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
+                                                <th>Customer : </th>
+                                                <td>{{occupiedCustomerList[i].FirstName}} {{occupiedCustomerList[i].MiddleName}} {{occupiedCustomerList[i].LastName}}
+                                                </td>
+                                            </tr>
+                                            <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
+                                                <th>Phone : </th>
+                                                <td>{{occupiedCustomerList[i].PhoneNo}}</td>
+                                            </tr>
+                                            <tr *ngIf="occupiedCustomerList && occupiedCustomerList.length>0">
+                                                <th>Check in : </th>
+                                                <td>{{occupiedCustomerList[i].CheckinTime | date: 'dd MMM yyyy - h:mm a'}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-success btndetails" routerLink="/roomdetails/{{room.Id}}">Room Details</button>
+                                <button *ngIf="occupiedCustomerList && occupiedCustomerList.length>0" type="button" class="btn btn-primary btn-sm btnRoomSubmit" (click)="SubmitRoom(room.Id,occupiedCustomerList[i].Id)">{{roomBtnText}}</button>
+                                <button *ngIf="occupiedCustomerList && occupiedCustomerList.length==0" type="button" class="btn btn-primary btn-sm btnRoomSubmit" (click)="SubmitRoom(room.Id)">{{roomBtnText}}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
